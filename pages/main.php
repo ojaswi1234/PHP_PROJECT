@@ -57,7 +57,7 @@
 
         <div id="div-3">
           <aside id="aside-2">
-            <img src="../public/Untitled design.png" width="800" height="500" alt="sleep" id="img2">
+            <img src="../public/Untitled design.png" width="700" height="500" alt="sleep" id="img2">
           </aside>
           <aside id="aside-3">
             <h1 id="h-3">How SleepSense Works ? </h1>
