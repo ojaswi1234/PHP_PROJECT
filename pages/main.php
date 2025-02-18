@@ -56,10 +56,19 @@
         </div>
 
         <div id="div-3">
-           
+          <aside id="aside-2">
+            <img src="../public/Untitled design.png" width="800" height="500" alt="sleep" id="img2">
+          </aside>
+          <aside id="aside-3">
+            <h1 id="h-3">How SleepSense Works ? </h1>
+            <p id="p-2">SleepSense uses advanced technology to monitor your sleep and provide personalized recommendations to improve your sleep quality. Track your sleep duration, quality,and stages with SleepSense.</p>
+          </aside>
+        </div>
+
+        <div id="div-4">
+          <h1>Continue</h1>
         </div>
         <footer>
-
           <p>Copyright 2022 SleepSense</p>
     </footer>
     </main>
@@ -86,6 +95,29 @@
             opacity: 0,
             y: 200,
             
+        });
+
+        gsap.from("#h-3",{
+          x: 400,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger:{
+            trigger:"#h-3",
+            start: "top 70%",
+            end: "bottom 20%",
+            markers: false,
+          }
+        });
+        gsap.from("#p-2",{
+          x: -400,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger:{
+            trigger:"#p-2",
+            start: "top 70%",
+            end: "bottom 20%",
+            markers: false,
+          }
         });
 
         const xAxis = [2019, 2020, 2021, 2022, 2023, 2024];
