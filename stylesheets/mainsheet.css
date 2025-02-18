@@ -22,13 +22,13 @@ header {
     padding: 14px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #main-nav {
     width: 100%;
     height: 90%;
-    margin-left: 15%;
+    margin-right: 2%;
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -111,6 +111,7 @@ header {
 
 #mobile-nav {
     visibility: hidden;
+    display: none; 
 }
 
 @media only screen and (max-width: 767px) {
@@ -122,22 +123,19 @@ header {
         width: fit-content;
         display: flex;
         align-items: center;
+       
     }
 
     #main-nav, #auth-div {
         visibility: hidden;
     }
 
-    #logo {
-        margin-left: 33%;
-    }
 
-    #mobile-nav {
-        visibility: visible;
-        width: 100%;
-        height: 100%;
+    header > #mobile-nav {
+        visibility: visible; 
+        display: block; 
         background-color: #ecf0f1;
-        transform: translateX(0); 
+        
     }
 
     #div-1 {
@@ -174,6 +172,50 @@ header {
     #div2{
         width:50%;
     }
+       #p-1{
+        padding: 32px;
+       }
+    #div-2-1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: fit-content;
+    }
+
+    #div-2-1 > #myChart, #div-2-1 > #myChart2 {
+        width: 100%;
+        max-width: 320px;
+        height: 100%;
+        min-height: 320px;
+        background-color: #ecf0f1;
+        border-radius: 10px;
+        padding: 32px;
+    }
+    #div-3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;;
+    }
+    #aside-2{
+        visibility: hidden;
+    }
+    #aside-3{
+        width: 100%;
+        max-width: 500px;
+      transform: translateX(-70%);
+    }
+    #aside-3 > #h-3{
+        font-size: 2rem;
+
+    }
+    #aside-3 > #p-2{
+        font-size: 1rem;
+    }
+    
 }
 
 #hero-img {
@@ -289,15 +331,7 @@ video {
     transform: translateY(-16px);
 }
 
-footer{
-    width: 100%;
-    height: 5%;
-    background-color: #2c3e50;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ecf0f1;
-}
+
 #div-3{
     width: 100%;
     height: 100vh;
@@ -335,3 +369,37 @@ footer{
     font-size: 1rem;
     color: #2c3e50;
 }
+
+footer{
+    width: 100%;
+    height: 20%;
+    background-color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    color: #ecf0f1;
+}
+
+#follow-div{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+#instagram,#linkedin,#github{
+    fill: white;
+    border-radius: 25%;
+    padding: 5px;
+}
+#instagram{
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+#linkedin{
+    background: linear-gradient(45deg, #0077b5 0%, #0077b5 25%, #0077b5 50%, #0077b5 75%, #0077b5 100%);
+}
+
+#github{
+    background: linear-gradient(45deg, #24292e 0%, #24292e 25%, #24292e 50%, #24292e 75%, #24292e 100%);
+}
+
