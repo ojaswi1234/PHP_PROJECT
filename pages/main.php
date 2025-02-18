@@ -54,7 +54,7 @@
 
         <div id="div-3">
           <aside id="aside-2">
-            <img src="../public/Untitled design.png" width="700" height="500" alt="sleep" id="img2">
+            <img src="../public/Untitled design.png" width="700" height="450" alt="sleep" id="img2">
           </aside>
           <aside id="aside-3">
             <h1 id="h-3">How SleepSense Works ? </h1>
@@ -117,6 +117,17 @@
           }
         });
 
+        gsap.from("#img2",{
+          opacity: 0,
+          duration: 1,
+          delay:0.2,
+          scrollTrigger:{
+            trigger:"#img2",
+            start: "top 70%",
+            end: "bottom 20%",
+            markers: false,
+          },
+        })
         const xAxis = [2019, 2020, 2021, 2022, 2023, 2024];
         const Colors = ["#3498db", "#f1c40f", "#2ecc71", "#e74c3c", "#9b59b6"];
         const yAxis = [7.5, 7.3, 7.1, 6.9, 6.7, 6.5];
