@@ -66,7 +66,7 @@ header {
         position: absolute;
         width: 100%;
         transform: scaleX(0);
-        height: 2px;
+        height: 1px;
         bottom: 0;
         left: 0;
         background-color: white;
@@ -92,6 +92,7 @@ header {
 #main-nav > #button-5:hover {
     color: #ecf0f1;
     background-color: #2c3e50;
+    font-weight: bolder;
 }
 
 #logo {
