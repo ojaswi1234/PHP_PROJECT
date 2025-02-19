@@ -15,14 +15,14 @@
     display: flex;
     flex-direction: row;
     justify-content: end;
-    gap: 24px;
     align-items: center;
+    gap: 20px; 
+    color: white;
 }
 
 #main-nav > a {
-    width: 130px;
-    height: 70%;
-    padding: 5px;
+    width: 120px;
+    height: 70%;;
     border-radius: 10px;
     text-decoration: none;
     display: flex;
@@ -104,7 +104,7 @@
             <a> SLEEPSENSE</a>
         </div>
         <nav id="main-nav">
-            <a href="#" id="button-1">About Sleep<span></span></a>
+            <a href="#" id="button-1" >About Sleep<span></span></a>
             <a href="#" id="button-2">Resources</a>
             <a href="../pages/tracker.php" id="button-3">Track My Sleep</a>
             <a href="#" id="button-4">Contact Us</a>
