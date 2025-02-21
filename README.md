@@ -42,58 +42,39 @@ Replace <your-branch-name> and <repository-URL> with your desired branch name an
   
 1️⃣ Create a New Branch
 ```sh
-Copy
-Edit
 git checkout -b <new-branch-name>
 ```
 or
 
 ```sh
-Copy
-Edit
 git switch -c <new-branch-name>
 ```
 🔹 This creates and switches to a new branch, keeping the main code untouched.
 
 2️⃣ Add or Modify Files
 Edit or add your files, then stage them:
-```
-sh
-Copy
-Edit
+```sh
 git add <file-name>
 ```
 or to add all changes:
-```
-sh
-Copy
-Edit
+```sh
 git add .
 ```
 3️⃣ Commit the Changes
-```
-sh
-Copy
-Edit
+```sh
 git commit -m "Added new feature or file"
 ```
 This saves the changes in the new branch.
 
 4️⃣ Push the New Branch (Optional, if working with GitHub)
-```
-sh
-Copy
-Edit
+```sh
 git push origin <new-branch-name>
 ```
 🔹 This uploads your new branch to the remote repo without affecting main.
 
 5️⃣ Merge into Main (Later, if needed)
 Once your changes are complete and tested, you can merge them into main:
-```
-sh
-Copy
-Edit
+```sh
 git checkout main
 git merge <new-branch-name>
 ```
