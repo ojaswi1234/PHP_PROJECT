@@ -10,7 +10,7 @@
 
 
 <body>
-    <header>
+    <header style="position: sticky; top: 0; z-index: 1000;">
         <div id="logo">
         <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="">
             <a> SLEEPSENSE</a>
@@ -18,9 +18,9 @@
         <nav id="main-nav">
             <a href="#" id="button-1">About Sleep<span></span></a>
             <a href="#" id="button-2">Resources<span></span></a>
-            <a href="../pages/tracker.php" id="button-3">Track My Sleep</a>
+
             <a href="#" id="button-4">Contact Us</a>
-            <a href="#" id="button-5">Get Started</a>
+            <a href="../pages/tracker.php" id="button-5">Get Started</a>
         </nav>
         <nav id="mobile-nav">
             <button>MENU<!--<svg aria-hidden="true" data-prefix="fal" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-7x"><path fill="currentColor" d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z" class=""></path></svg>--></button>
@@ -141,126 +141,95 @@
           },
         })
         const xAxis = [2019, 2020, 2021, 2022, 2023, 2024];
-        const Colors = ["#3498db", "#f1c40f", "#2ecc71", "#e74c3c", "#9b59b6"];
-        const yAxis = [7.5, 7.3, 7.1, 6.9, 6.7, 6.5];
+const yAxis = [7.5, 7.3, 7.1, 6.9, 6.7, 6.5]; // Average sleep hours per night
 
-        const myChart = new Chart("myChart", {
-          type: "line",
-          data: {
-            labels: xAxis,
-            datasets: [{
-              backgroundColor: "rgba(52, 152, 219, 0.2)",
-              borderColor: "#3498db",
-              pointBackgroundColor: "#3498db",
-              pointBorderColor: "#3498db",
-              pointHoverBackgroundColor: "#3498db",
-              pointHoverBorderColor: "#3498db",
-              data: yAxis,
-              label: "Sleep Hours",
-              fill: true,
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: "Average Sleep Hours per Night",
-              fontSize: 24,
-              fontColor: "#333",
-            },
-            legend: {
-              display: false,
-            },
-            scales: {
-              yAxes: [{
-            ticks: {
-              beginAtZero: false,
-              min: 6,
-              max: 8,
-              stepSize: 0.5,
-              fontColor: "#666",
-              fontSize: 14,
-            },
-            gridLines: {
-              display: true,
-              color: "#ddd",
-            },
-              }],
-              xAxes: [{
-            ticks: {
-              fontColor: "#666",
-              fontSize: 14,
-            },
-            gridLines: {
-              display: false,
-            },
-              }],
-            },
-          },
-        });
+const myChart = new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xAxis,
+    datasets: [{
+      backgroundColor: "rgba(52, 152, 219, 0.2)",
+      borderColor: "#3498db",
+      pointBackgroundColor: "#3498db",
+      pointBorderColor: "#3498db",
+      pointHoverBackgroundColor: "#3498db",
+      pointHoverBorderColor: "#3498db",
+      data: yAxis,
+      label: "Average Sleep Hours",
+      fill: true,
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "Average Sleep Hours per Night (2019-2024)",
+      fontSize: 24,
+      fontColor: "#333",
+    },
+    legend: {
+      display: false,
+    },
+    scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: false,
+          min: 6,
+          max: 8,
+          stepSize: 0.5,
+          fontColor: "#666",
+          fontSize: 14,
+        },
+        gridLines: {
+          display: true,
+          color: "#ddd",
+        },
+      }],
+      xAxes: [{
+        ticks: {
+          fontColor: "#666",
+          fontSize: 14,
+        },
+        gridLines: {
+          display: false,
+        },
+      }],
+    },
+  },
+});
+const ctx = document.getElementById('myChart2').getContext('2d');
+const sleepPieChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['India','Netherlands', 'Finland', 'Australia', 'France', 'Japan', 'Singapore'],
+    datasets: [{
+      data: [ 7.1,8.1 , 8.0, 7.9, 7.9, 6.4, 6.7], 
+      backgroundColor: [
+        '#e74c3c',// India
+        '#3498db', // Netherlands
+        '#2ecc71', // Finland
+        '#f1c40f', // Australia
+        '#9b59b6', // France
+        '#34495e', // Japan
+        '#1abc9c'  // Singapore
+      ],
+      borderColor: '#ffffff',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Average Sleep Hours by Country (2024)',
+      fontSize: 24,
+      fontColor: '#333'
+    },
+    legend: {
+      display: true,
+      position: 'right'
+    }
+  }
+});
 
-        const myChart2 = new Chart("myChart2", {
-          type: "bar",
-          data: {
-            labels: xAxis,
-            datasets: [{
-              label: "Sleep Hours",
-              data: yAxis,
-              backgroundColor: [
-            "#3498db",
-            "#f1c40f",
-            "#2ecc71",
-            "#e74c3c",
-            "#9b59b6",
-            "#1abc9c",
-              ],
-              borderColor: [
-            "#3498db",
-            "#f1c40f",
-            "#2ecc71",
-            "#e74c3c",
-            "#9b59b6",
-            "#1abc9c",
-              ],
-              borderWidth: 1,
-            }]
-          },
-          options: {
-            title: {
-              display: true,
-              text: "Average Sleep Hours per Night",
-              fontSize: 24,
-              fontColor: "#333",
-            },
-            legend: {
-              display: false,
-            },
-            scales: {
-              yAxes: [{
-            ticks: {
-              beginAtZero: false,
-              min: 6,
-              max: 8,
-              stepSize: 0.5,
-              fontColor: "#666",
-              fontSize: 14,
-            },
-            gridLines: {
-              display: true,
-              color: "#ddd",
-            },
-              }],
-              xAxes: [{
-            ticks: {
-              fontColor: "#666",
-              fontSize: 14,
-            },
-            gridLines: {
-              display: false,
-            },
-              }],
-            },
-          },
-        });
 
     </script>
 </body>
