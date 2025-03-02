@@ -16,7 +16,7 @@
             <a> SLEEPSENSE</a>
         </div>
         <nav id="main-nav">
-            <a href="#" id="button-1">About Sleep<span></span></a>
+            <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
             <a href="#" id="button-2">Resources<span></span></a>
 
             <a href="#" id="button-4">Contact Us</a>

@@ -54,11 +54,9 @@ header {
     cursor: pointer;
     transition: 0.6s;
     font-family: "Poppins", sans-serif;
-}
-#main-nav a {
     text-decoration: none;
     position: relative;
-    }
+}
 
       
     #main-nav > #button-1::after,
@@ -79,7 +77,6 @@ header {
 
     #main-nav > #button-1:hover::after,
     #main-nav > #button-2:hover::after,
-    #main-nav > #button-3:hover::after,
     #main-nav > #button-4:hover::after {
         transform: scaleX(1);
         transform-origin: bottom left;
