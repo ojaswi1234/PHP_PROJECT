@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +16,19 @@
     scrollbar-width: none;
 }
   
-  header {
+ 
+
+header {
     width: 100%;
     height: 36px;
     color: #f5f5f5;
-    background-color: #2c3e50;
+    background-color: #0D1B2A;
     padding: 14px;
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
+
 #main-nav {
     width: 100%;
     height: 90%;
@@ -37,6 +39,7 @@
     gap: 24px;
     align-items: center;
 }
+
 #main-nav > a {
     width: 130px;
     height: 90%;
@@ -47,7 +50,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: #ecf0f1;
+    color: #F5F5F5;
     background-color: transparent;
     cursor: pointer;
     transition: 0.6s;
@@ -82,14 +85,14 @@
 
 
 #main-nav > #button-5 {
-    color: #2c3e50;
-    background-color: #ecf0f1;
+    color: #0D1B2A;
+    background-color: #4FC3F7;
     font-weight: bold;
 }
 
 #main-nav > #button-5:hover {
     color: #ecf0f1;
-    background-color: #2c3e50;
+    background-color: transparent;
     font-weight: bolder;
 }
 
@@ -120,16 +123,9 @@
     margin-top: 5%;
 }
 
-#tracker-form {
-    display: block;
-    gap: 5px;
-    border: 2px solid #2c3e50;
-    padding: 52px;
-    box-shadow: 7px 7px 0 #2c3e50; 
-}
 #tracker-form > h1{
-    font-family: "gilroy", sans-serif;
-    font-size: 3rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 2.5rem;
     color: #2c3e50;
     text-align: center;
 
@@ -152,6 +148,7 @@
     padding: 5px;
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
+    outline: none;
 }
 #tracker-form > input[type="submit"] {
     width: 100px;
@@ -167,6 +164,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 24px;
 }
 
 #tracker-form > input[type="submit"]:hover{
@@ -178,8 +176,10 @@
 }
 
 #tracker-form > select{
+    width: 510px;
     padding: 10px;
     border-radius: 5px;
+    border: 1px solid #2c3e50;
 }
 
 #tracker-form > select:hover, #tracker-form > select:focus{
@@ -188,8 +188,69 @@
     cursor: pointer;
 }
 
+form {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    height: 550px;
+    background-color: transparent;
+    border: 4px solid  #2c3e50;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;;
+    margin-top: 6%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+}
+form::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 702px;
+    background-color: #2c3e50;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.5s, height 0.5s 0.5s;
+    box-sizing: border-box;
+}
+form::after {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 702px;
+    background-color:  #2c3e50;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.5s, height 0.5s 0.5s;
+    box-sizing: border-box;
+    transition: width 0.5s, height 0.5s 0.5s;
+}
 
+form:hover::before {
+    width: 0;
+    height: 10px;
+    transition: height 0.5s, width 0.5s 0.5s;
+}
 
+form:hover::after {
+    width: 0;
+    height: 10px;
+    transition: height 0.5s, width 0.5s 0.5s;
+}
+#span1 {
+    background-color: #2c3e50;
+    color: white;
+    padding:5px;
+}
 
 </style>
 <body>
@@ -212,7 +273,7 @@
     <div id="tracker-div">
        
         <form method="post" action="" id="tracker-form">
-        <h1> Enter your <span style="-webkit-text-stroke: 2.5px black;  color: transparent; font-size: 3.5rem;">Sleep</span> Time </h1>
+        <h1> Enter your <span id="span1">Sleep Time</span> </h1>
             <label for="sleep_time">Sleep Time</label>
             <input type="time" id="sleep-time" name="sleep-time" required>
             <br><br>
