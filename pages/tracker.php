@@ -255,14 +255,79 @@ form:hover::after {
     color: white;
     padding:5px;
 }
-@media only screen and (max-width: 727px) {
-    video { visibility: hidden; }
+
+@media only screen and  (max-width: 727px) {
+  form::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 202px;
+    background-color: #2c3e50;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.5s, height 0.5s 0.5s;
+    box-sizing: border-box;
+}
+form::after {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 202px;
+    background-color:  #2c3e50;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.5s, height 0.5s 0.5s;
+    box-sizing: border-box;
+    transition: width 0.5s, height 0.5s 0.5s;
+}
+
+form:hover::before {
+    width: 0;
+    height: 10px;
+    transition: height 0.5s, width 0.5s 0.5s;
+}
+
+form:hover::after {
+    width: 0;
+    height: 10px;
+    transition: height 0.5s, width 0.5s 0.5s;
+}
+
     header {
-      width: 800%;
+      width: fit-content;
       position: sticky;
       align-items: center;
     }
-    #main-nav, #auth-div { visibility: hidden; }
+    #main-nav { 
+      visibility: hidden; 
+    }
+    #tracker-div{
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #tracker-form {
+        width: 85%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(15%);
+    }
+    #tracker-form > input{
+      width: 80%;
+    }
+    #tracker-form > select {
+        width: 83%;
+    }
+
+
     header > #mobile-nav {
       width: 10px;
       height: 10px;
@@ -277,61 +342,6 @@ form:hover::after {
       justify-content: center;
       align-items: center;
     }
-    #div-1 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-bottom: 10px;
-    }
-    aside {
-      width: 80%;
-      height: 80%;
-    }
-    #main-title {
-      font-size: 1.5rem;
-      padding: 32px;
-      transform: translateX(5%);
-      font-weight: 500;
-    }
-    #main-title > b {
-      font-size: 3rem;
-    }
-    #boldy-3 {
-      text-decoration: underline;
-      text-underline-offset: 5px;
-    }
-    #div2 { width: 50%; }
-    #p-1 { padding: 32px; }
-    #div-2-1 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-    }
-    #div-2-1 > #myChart, #div-2-1 > #myChart2 {
-      width: 100%;
-      max-width: 420px;
-      min-height: 320px;
-      background-color: #F8F9FA;
-      border-radius: 10px;
-      padding: 32px;
-    }
-    #div-3 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
-    }
-    #aside-2 { visibility: hidden; }
-    #aside-3 {
-      width: 100%;
-      max-width: 500px;
-      transform: translateX(-70%);
-    }
-    #aside-3 > #h-3 { font-size: 2rem; }
-    #aside-3 > #p-2 { font-size: 1rem; }
 
     #menuToggle{
         display: block;
@@ -474,7 +484,7 @@ form:hover::after {
                 <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                 <li><label for="menuBox"><a href="#">Resources</a></label></li>
                 <li><label for="menuBox"><a href="#">Contact Us</a></label></li>
-                <li><label for="menuBox"><a href="../pages/login.php">Get Started</a></label></li>
+                <li><label for="menuBox"><a href="../pages/main.php">Home</a></label></li>
               </ul>
            </div>
         </nav>

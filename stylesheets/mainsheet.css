@@ -29,8 +29,8 @@ header {
 
 #main-nav {
     width: 100%;
-    height: 90%;
-    margin-left: 15%;
+    height: fit-content;
+    margin-left: 40%;
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -83,6 +83,9 @@ header {
 
 
 #main-nav > #button-5 {
+    width: 130px;
+    height: 90%;
+    padding: 8px;
     color: #0D1B2A;
     background-color: #4FC3F7;
     font-weight: bold;
@@ -111,9 +114,142 @@ header {
 #mobile-nav {
     visibility: hidden;
 }
+@media (max-width: 1400px){
+    #mobile-nav {
+        width: 10px;
+        height: 10px;
+        visibility: visible;
+        transform: translateX(0);
+        position: absolute;
+        top: 30%;
+        background-color: transparent;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #menuToggle{
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 130px;
+        transform: translateY(-50%);
+        -webkit-user-select: none;
+        user-select: none;
+    }
 
-@media only screen and (max-width: 727px) {
-    video { visibility: hidden; }
+    #menuToggle > ul > label > a{
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+    }
+    #menuToggle > a:hover{
+        color: #232323;
+    }
+    #menuToggle > input{
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -7px;
+        left: -5px;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+        -webkit-touch-callout: none;
+    }
+    #menuToggle > span{
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        background: #cdcdcd;
+        border-radius: 3px;
+        z-index: 1;
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+                    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+                    opacity 0.55s ease;
+
+    }
+    #menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+#menu
+{
+  position: absolute;
+  max-width: 400px;
+  width: 100vw;
+  max-height: 100vh;
+  margin: -100px 0 500px -200px;
+  padding: 50px;
+  padding-top: 125px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  
+  transform-origin: 100% 0%;
+  transform: translate(100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menu li label
+{
+  cursor: pointer;
+}
+
+#menu > li > label > a {
+    text-decoration: none;
+    color: black !important;
+    font-family: "Poppins", sans-serif !important;
+    transition: color 0.3s ease;
+}
+#menu > li > label > a:hover {
+    color: orange !important;
+}
+
+
+#menuToggle input:checked ~ ul
+{
+  transform: translate(0, 0);
+}
+}
+
+
+
+@media (max-width: 727px) {
+   
     header {
       width: fit-content;
       position: sticky;
@@ -168,8 +304,8 @@ header {
     }
     #div-2-1 > #myChart, #div-2-1 > #myChart2 {
       width: 100%;
-      max-width: 420px;
-      min-height: 320px;
+      max-width: 320px;
+      min-height: 220px;
       background-color: #F8F9FA;
       border-radius: 10px;
       padding: 32px;
@@ -377,10 +513,10 @@ b {
 
 #myChart, #myChart2 {
     width: 100%;
-    max-width: 650px;
+    max-width: 630px;
     height: 100%;
     min-height: 400px;
-    background-color: #ecf0f1;
+    background-color: #e2e7e8;
     border-radius: 10px;
     padding: 32px;
 }
