@@ -16,7 +16,11 @@
     scrollbar-width: none;
 }
   
- 
+main {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
 
 header {
     width: 100%;
@@ -251,7 +255,201 @@ form:hover::after {
     color: white;
     padding:5px;
 }
+@media only screen and (max-width: 727px) {
+    video { visibility: hidden; }
+    header {
+      width: 800%;
+      position: sticky;
+      align-items: center;
+    }
+    #main-nav, #auth-div { visibility: hidden; }
+    header > #mobile-nav {
+      width: 10px;
+      height: 10px;
+      visibility: visible;
+      transform: translateX(0);
+      position: absolute;
+      top: 30%;
+      left: 53%;
+      background-color: transparent;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #div-1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-bottom: 10px;
+    }
+    aside {
+      width: 80%;
+      height: 80%;
+    }
+    #main-title {
+      font-size: 1.5rem;
+      padding: 32px;
+      transform: translateX(5%);
+      font-weight: 500;
+    }
+    #main-title > b {
+      font-size: 3rem;
+    }
+    #boldy-3 {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+    #div2 { width: 50%; }
+    #p-1 { padding: 32px; }
+    #div-2-1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    #div-2-1 > #myChart, #div-2-1 > #myChart2 {
+      width: 100%;
+      max-width: 420px;
+      min-height: 320px;
+      background-color: #F8F9FA;
+      border-radius: 10px;
+      padding: 32px;
+    }
+    #div-3 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+    }
+    #aside-2 { visibility: hidden; }
+    #aside-3 {
+      width: 100%;
+      max-width: 500px;
+      transform: translateX(-70%);
+    }
+    #aside-3 > #h-3 { font-size: 2rem; }
+    #aside-3 > #p-2 { font-size: 1rem; }
 
+    #menuToggle{
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 130px;
+        transform: translateY(-50%);
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    #menuToggle > ul > label > a{
+        text-decoration: none;
+        color: white;
+        transition: color 0.3s ease;
+    }
+    #menuToggle > a:hover{
+        color: #232323;
+    }
+    #menuToggle > input{
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -7px;
+        left: -5px;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 2;
+        -webkit-touch-callout: none;
+    }
+    #menuToggle > span{
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        background: #cdcdcd;
+        border-radius: 3px;
+        z-index: 1;
+        transform-origin: 4px 0px;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+                    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+                    opacity 0.55s ease;
+
+    }
+    #menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+#menu
+{
+  position: absolute;
+  max-width: 400px;
+  width: 100vw;
+  max-height: 100vh;
+  margin: -100px 0 500px -200px;
+  padding: 50px;
+  padding-top: 125px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  
+  transform-origin: 100% 0%;
+  transform: translate(100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+#menu li label
+{
+  cursor: pointer;
+}
+
+#menu > li > label > a {
+    text-decoration: none;
+    color: black !important;
+    font-family: "Poppins", sans-serif !important;
+    transition: color 0.3s ease;
+}
+#menu > li > label > a:hover {
+    color: orange !important;
+}
+
+
+#menuToggle input:checked ~ ul
+{
+  transform: translate(0, 0);
+}
+  }
 </style>
 <body>
         <header style="background-color: #2c3e50; position: sticky; top: 0; z-index: 1000;">
@@ -267,9 +465,22 @@ form:hover::after {
             <a href="../pages/main.php" id="button-5">Home</a>
         </nav>
         <nav id="mobile-nav">
-            <button>MENU<svg aria-hidden="true" data-prefix="fal" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-bars fa-w-14 fa-7x"><path fill="currentColor" d="M442 114H6a6 6 0 0 1-6-6V84a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6zm0 160H6a6 6 0 0 1-6-6v-24a6 6 0 0 1 6-6h436a6 6 0 0 1 6 6v24a6 6 0 0 1-6 6z" class=""></path></svg></button>
+           <div id="menuToggle">
+            <input type="checkbox" id="menuBox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
+                <li><label for="menuBox"><a href="#">Resources</a></label></li>
+                <li><label for="menuBox"><a href="#">Contact Us</a></label></li>
+                <li><label for="menuBox"><a href="../pages/login.php">Get Started</a></label></li>
+              </ul>
+           </div>
         </nav>
     </header>
+    <main>
+
     <div id="tracker-div">
        
         <form method="post" action="" id="tracker-form">
@@ -292,7 +503,8 @@ form:hover::after {
             <br><br>
             <input type="submit" value="Submit" onclick="alert('Your sleep time has been recorded!')">
         </form>
-    </div>
+        </div>
+</main>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sleepTime = $_POST['sleep-time'];
