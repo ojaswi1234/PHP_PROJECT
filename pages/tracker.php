@@ -36,7 +36,7 @@ header {
 #main-nav {
     width: 100%;
     height: 90%;
-    margin-left: 15%;
+    margin-left: 40%;
     display: flex;
     flex-direction: row;
     justify-content: end;
@@ -63,7 +63,13 @@ header {
     position: relative;
 }
 
-      
+#main-nav > #button-1:hover,
+    #main-nav > #button-2:hover,
+    #main-nav > #button-4:hover{
+        color: orange;
+    }  
+
+
     #main-nav > #button-1::after,
     #main-nav > #button-2::after,
     #main-nav > #button-3::after,
@@ -75,7 +81,7 @@ header {
         height: 1px;
         bottom: 0;
         left: 0;
-        background-color: white;
+        background-color: orange;
         transform-origin: bottom right;
         transition: transform 0.25s ease-in-out;
     }
@@ -319,6 +325,10 @@ form:hover::after {
         justify-content: center;
         align-items: center;
         transform: translateY(15%);
+    }
+    #tracker-form > h1{
+        font-size: 1.5rem;
+        text-align: center;
     }
     #tracker-form > input{
       width: 80%;

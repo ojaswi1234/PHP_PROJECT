@@ -44,13 +44,12 @@
             </video>
         <div class="container">
             <div id="div-1">
-                <aside><img src="../public/pngtree-room-model-cute-three-dimensional-cartoon-pattern-png-image_6671841-removebg-preview.png" alt="sleep" id="cover-img"></aside>
+                <aside id="aside-1"><img src="../public/7cd62ef2-08da-4d8b-880f-98558b69dc1b.png" alt="sleep" id="cover-img"></aside>
                 
                     <h1 id="main-title">
                         <b>Track, Improve, Sleep</b> Better with SleepSense<br/>
                         Transform your Nights with <b id="boldy-3">SleepSense</b>
                     </h1>
-                
             </div>
             <div id="div-2">
                 <h1 id="h-2">Why Use SleepSense ?</h1>
