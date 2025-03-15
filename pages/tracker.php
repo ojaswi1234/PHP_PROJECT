@@ -23,14 +23,15 @@ main {
 }
 
 header {
-    width: 100%;
-    height: 36px;
-    color: #f5f5f5;
-    background-color: #0D1B2A;
-    padding: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  width: 100%;
+  height: 44px;
+  color: white;
+  background-color: #101922;
+  position: sticky;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #main-nav {
@@ -503,15 +504,15 @@ form:hover::after {
 
     <div id="tracker-div">
        
-        <form method="post" action="" id="tracker-form">
-        <h1> Enter your <span id="span1">Sleep Time</span> </h1>
+        <form method="post" action="../pages/backend/db.php" id="tracker-form">
+        <h1> Enter your <span id="span1">Sleep Time</span></h1>
             <label for="sleep_time">Sleep Time</label>
             <input type="time" id="sleep-time" name="sleep-time" required>
             <br><br>
             <label for="wake_time">Wake Time</label>
             <input type="time" format="24hour" id="wakeup-time" name="wakeup-time" required>
             <br><br>
-            <select name="day">
+            <select name="day" required>
                 <option>Monday</option>
                 <option>Tuesday</option>
                 <option>Wednesday</option>
@@ -521,17 +522,21 @@ form:hover::after {
                 <option>Sunday</option>
             </select>
             <br><br>
-            <input type="submit" value="Submit" onclick="alert('Your sleep time has been recorded!')">
+            <input type="submit" value="Submit"  id="submit-button">
         </form>
         </div>
 </main>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $sleepTime = $_POST['sleep-time'];
-        $wakeTime = $_POST['wakeup-time'];
-        $day = $_POST['day'];
-        echo "<p>Your sleep time has been recorded for $day. Sleep Time: $sleepTime, Wake Time: $wakeTime</p>";
-    }
-    ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    var submitButton = document.getElementById('submit-button');
+    submitButton.addEventListener('click', function() {
+        Swal.fire({
+            title: 'Success',
+            text: 'Your sleep time has been recorded',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        })
+    })
+</script>
 </body>
 </html>

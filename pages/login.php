@@ -27,7 +27,7 @@
                         <p>Or use your email and password</p>
                         <input type = "text" id = "logEmail" placeholder = "Enter your Email">
                         <input type = "password" id = "logPassword" placeholder = "Enter your password">
-                        <button type = "submit">submit </button>
+                        <button type = "submit" >submit </button>
                     </form>
                 </div>
                 <div id = "sign-up">

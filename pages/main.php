@@ -64,11 +64,11 @@
 
         <div id="div-3">
           <aside id="aside-2">
-            <img src="../public/Untitled design.png" width="700" height="450" alt="sleep" id="img2">
+            <img src="../public/Untitled_design.png" width="700" height="400" alt="sleep" id="img2">
           </aside>
           <aside id="aside-3">
             <h1 id="h-3">How SleepSense Works ? </h1>
-            <p id="p-2">SleepSense uses advanced technology to monitor your sleep and provide personalized recommendations to improve your sleep quality. Track your sleep duration, quality,and stages with SleepSense.</p>
+            <p id="p-2">SleepSense uses advanced technology to monitor your sleep and provide personalized recommendations to improve your sleep quality. Track your sleep duration and quality with SleepSense.</p>
           </aside>
         </div>
         <footer>
