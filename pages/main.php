@@ -13,7 +13,8 @@
     <header style="position: sticky; top: 0; z-index: 1000;">
         <div id="logo">
         <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="">
-            <a> SLEEPSENSE</a>
+            <a href="../pages/main.php" style="text-decoration: none;
+    color: white;"> SLEEPSENSE</a>
         </div>
         <nav id="main-nav">
             <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>

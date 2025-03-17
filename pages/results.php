@@ -285,13 +285,14 @@ session_start();
   <header style="background-color: #2c3e50; position: sticky; top: 0; z-index: 1000;">
     <div id="logo">
       <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="" style="background-color:white; border-radius: 100%;">
-      <a> SLEEPSENSE</a>
+      <a href="../pages/main.php" style="text-decoration: none;
+    color: white;"> SLEEPSENSE</a>
     </div>
     <nav id="main-nav">
       <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
       <a href="#" id="button-2">Resources</a>
       <a href="#" id="button-4">Contact Us</a>
-      <a href="../pages/main.php" id="button-5">Home</a>
+      <a href="../pages/backend/logout.php">Log Out</a>
     </nav>
     <nav id="mobile-nav">
       <div id="menuToggle">
@@ -303,7 +304,7 @@ session_start();
           <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
           <li><label for="menuBox"><a href="#">Resources</a></label></li>
           <li><label for="menuBox"><a href="#">Contact Us</a></label></li>
-          <li><label for="menuBox"><a href="../pages/main.php">Home</a></label></li>
+          <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
         </ul>
       </div>
     </nav>
