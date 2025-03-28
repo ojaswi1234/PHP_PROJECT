@@ -18,28 +18,15 @@
                 <div id = "sign-in">
                     <form id = "sign-in-form"> 
                         <h1>Sign in</h1>
-                        <div class = "loginOpt">
-                            <a href = "#" class = "icon"><i class="fa-brands fa-google"></i></a>
-                            <a href = "#" class = "icon"><i class="fa-brands fa-facebook"></i></a>
-                            <a href = "#" class = "icon"><i class="fa-brands fa-github"></i></a>
-                            <a href = "#" class = "icon"><i class="fa-brands fa-linkedin"></i></a>
-                        </div>
-                        <p>Or use your email and password</p>
                         <input type = "text" id = "logEmail" placeholder = "Enter your Email">
                         <input type = "password" id = "logPassword" placeholder = "Enter your password">
                         <button type = "submit" >submit </button>
+                        <p>Don't have an Account ? <a href="#sign-up">Create One</a></p>
                     </form>
                 </div>
                 <div id = "sign-up">
                     <form id = "sign-up-form"> 
                         <h1>Sign up</h1>
-                        <div class = "loginOpt">
-                            <a href = "#" class = "icon"><i class="fa-brands fa-google"></i></a>
-                            <a href = "#" class = "icon"><i class="fa-brands fa-facebook"></i></a>
-                            <a href = "#" class = "icon"><i class="fa-brands fa-github"></i></a>
-                            <a href = "#" class = "icon"><i class="fa-brands fa-linkedin"></i></a>
-                        </div>
-                        <p>Or enter the following credentials.</p>
                         <input type = "text" id = "regName" placeholder = "Enter your name">
                         <input type = "text" id = "regEmail" placeholder = "Enter your Email">
                         <input type = "password" id = "regPassword" placeholder = "Enter your password">

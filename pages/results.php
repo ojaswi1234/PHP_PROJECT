@@ -7,7 +7,7 @@ session_start();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SleepSense Results</title>
+  <title>SleepSense</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');  
     body, html {
@@ -17,6 +17,7 @@ session_start();
       padding: 0;
       overflow-x: hidden;
       scrollbar-width: none;
+      font-family: 'Gilroy', sans-serif;
     }
     
     main {
@@ -26,7 +27,7 @@ session_start();
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row-reverse;
     }
 
     header {
@@ -268,16 +269,16 @@ session_start();
       }
     }
 
-    footer {
-      width: 100%;
-      height: 50px;
-      background-color: #101922;
-      color: white;
+    
+
+    #chart-container{
+      width: 50%;
+      height: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      position: fixed;
-      bottom: 0;
+      flex-direction: column;
+      padding: 44px;
     }
   </style>
 </head>
@@ -292,7 +293,7 @@ session_start();
       <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
       <a href="#" id="button-2">Resources</a>
       <a href="#" id="button-4">Contact Us</a>
-      <a href="../pages/backend/logout.php">Log Out</a>
+      <a href="../pages/main.php">Log Out</a>
     </nav>
     <nav id="mobile-nav">
       <div id="menuToggle">
@@ -317,9 +318,61 @@ session_start();
       } else {
         echo "<h2>No data available</h2>";
       }
+
+      $hours= $_SESSION['average_sleep_hours'];
+      if(isset($hours)){
+      if($hours < 6) {
+        echo "<h3>It seems like you are not getting enough sleep. Please try to get at least 6 hours of sleep per day.</h3>";
+      } else if($hours >= 6 && $hours <= 8) {
+        echo "<h3>Great job! You are getting enough sleep. Keep it up!</h3>";
+      } else {
+        echo "<h3>It seems like you are getting too much sleep. Please try to get at least 6 hours of sleep per day.</h3>";
+      }{
+      }
+      } else {
+        echo " ";
+      }
       ?>
     </div>
+    <div id="chart-container">
+        <canvas id="chart1"></canvas>
+        
+      </div>
   </main>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script>
+  var ctx = document.getElementById('chart1').getContext('2d');
+  var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      datasets: [{
+        label: 'Sleep Hours',
+        data: [
+            <?php
+            if (isset($_SESSION['daywise_hours'])) {
+                echo implode(',', array_values($_SESSION['daywise_hours']));
+            } else {
+                echo '0,0,0,0,0,0,0';
+            }
+            ?>
+        ],
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 2,
+        fill: true
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+</script>
 </body>
 </html>

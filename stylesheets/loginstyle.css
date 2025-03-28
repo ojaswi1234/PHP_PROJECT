@@ -148,3 +148,15 @@ input{
     transform : translateX(-100%);
 }
 
+@media (max-width: 727px) {
+    #sign-in{
+        width : 100%;
+        
+    }
+    #window {
+        visibility: hidden;
+    }
+    #sign-up{
+        display : none;
+    }
+}

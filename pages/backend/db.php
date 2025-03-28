@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session to set session variables
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -26,41 +26,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $sql = "INSERT INTO `sleep_tracker` (`day`, `sleep_time`, `wake_time`) VALUES ('$day', '$t1', '$t2')";
 
-    
-    if($con->query($sql) === TRUE){
-
-    } else {
+    if (!$con->query($sql)) {
         echo "Error: " . $sql . "<br>" . $con->error;
     }
 
-    // Check if the day is Sunday
     if ($day == 'Sunday') {
-        // Calculate average sleeping hours for the week
-        $result = $con->query("SELECT sleep_time, wake_time FROM sleep_tracker");
+        $result = $con->query("SELECT day, sleep_time, wake_time FROM sleep_tracker");
         $total_sleep_hours = 0;
-        $count = 0;
+        $daywise_hours = array_fill_keys(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 0);
 
         while ($row = $result->fetch_assoc()) {
             $sleep_time = strtotime($row['sleep_time']);
             $wake_time = strtotime($row['wake_time']);
-            $sleep_hours = ( $sleep_time - $wake_time) / 3600; // Convert seconds to hours
+
+            if ($wake_time < $sleep_time) {
+                $wake_time += 24 * 3600;
+            }
+
+            $sleep_hours = ($wake_time - $sleep_time) / 3600;
             $total_sleep_hours += $sleep_hours;
-            $count++;
+
+            $daywise_hours[$row['day']] += $sleep_hours;
         }
 
-        
-
-        $average_sleep_hours = $total_sleep_hours / $count;
+        $average_sleep_hours = $total_sleep_hours / count(array_filter($daywise_hours, fn($hours) => $hours > 0));
 
         $_SESSION['average_sleep_hours'] = $average_sleep_hours;
-
-        $_SESSION['sleep_hours'] = $sleep_time_slot;
+        $_SESSION['daywise_hours'] = $daywise_hours;
 
         header("Location: ../results.php");
         exit();
+    } else {
+        header("Location: ../tracker.php");
     }
-
-   
 }
 
 mysqli_close($con);

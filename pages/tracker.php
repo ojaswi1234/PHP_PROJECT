@@ -477,14 +477,14 @@ form:hover::after {
         <div id="logo">
         <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="" style="background-color:white; border-radius: 100%;">
         <a href="../pages/main.php" style="text-decoration: none;
-    color: white;"> SLEEPSENSE</a>
+    color: white;">SLEEPSENSE</a>
         </div>
         <nav id="main-nav">
             <a href="../pages/about.php" id="button-1" >About Sleep<span></span></a>
             <a href="#" id="button-2">Resources</a>
          
             <a href="#" id="button-4">Contact Us</a>
-            <a href="../pages/backend/logout.php" id="button-5">Log Out</a>
+            <a href="../pages/main.php" id="button-5">Log Out</a>
         </nav>
         <nav id="mobile-nav">
            <div id="menuToggle">
@@ -527,17 +527,5 @@ form:hover::after {
         </form>
         </div>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    var submitButton = document.getElementById('submit-button');
-    submitButton.addEventListener('click', function() {
-        Swal.fire({
-            title: 'Success',
-            text: 'Your sleep time has been recorded',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-        })
-    })
-</script>
 </body>
 </html>
