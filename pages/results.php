@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+// Redirect to login if not authenticated
+if (!isset($_SESSION['mysql_username'])) {
+    header("Location: ../login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

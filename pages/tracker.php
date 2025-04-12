@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Redirect to login if not authenticated
+if (!isset($_SESSION['mysql_username'])) {
+    header("Location: ../login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SleepSense Tracker</title>
     <style>
+        /* Existing CSS unchanged */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');  
         body, html {
             width: 100%;
@@ -427,7 +438,7 @@
         <nav id="main-nav">
             <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
             <a href="#" id="button-2">Resources</a>
-            <a href="../pages/main.php" id="button-5">Log Out</a>
+            <a href="../pages/backend/logout.php" id="button-5">Log Out</a>
         </nav>
         <nav id="mobile-nav">
             <div id="menuToggle">
@@ -438,7 +449,7 @@
                 <ul id="menu">
                     <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                     <li><label for="menuBox"><a href="#">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/main.php">Log Out</a></label></li>
+                    <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
                 </ul>
             </div>
         </nav>
@@ -468,27 +479,19 @@
         </div>
     </main>
     <script>
-  =
-    fetch('../pages/backend/get_days.php')
-        .then(response => response.json())
-        .then(data => {
-            const select = document.getElementById('day-select');
-            const options = select.options;
-            for (let i = 0; i < options.length; i++) {
-                if (data.includes(options[i].value)) {
-                    options[i].disabled = true;
+        // Fetch used days and disable them in the dropdown
+        fetch('../pages/backend/get_days.php')
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById('day-select');
+                const options = select.options;
+                for (let i = 0; i < options.length; i++) {
+                    if (data.includes(options[i].value)) {
+                        options[i].disabled = true;
+                    }
                 }
-            }
-
-     
-            select.addEventListener('change', () => {
-                if (data.includes(select.value)) {
-                    alert(`The day "${select.value}" has already been used. Please select a different day.`);
-                    select.value = ""; // Reset the selection
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching used days:', error));
-</script>
+            })
+            .catch(error => console.error('Error fetching used days:', error));
+    </script>
 </body>
 </html>

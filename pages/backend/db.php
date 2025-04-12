@@ -1,9 +1,15 @@
 <?php
 session_start();
 
+// Check if user is logged in
+if (!isset($_SESSION['mysql_username']) || !isset($_SESSION['mysql_password'])) {
+    header("Location: ../../login.php");
+    exit();
+}
+
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = $_SESSION['mysql_username'];
+$password = $_SESSION['mysql_password']; // Can be empty
 $dbname = "sleep_tracker";
 
 $con = mysqli_connect($servername, $username, $password, $dbname);
@@ -18,9 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $day = $_POST['day'];
 
     // Check for duplicate day
-    $check_query = "SELECT COUNT(*) as count FROM sleep_tracker WHERE day = '$day'";
-    $check_result = $con->query($check_query);
-    $row = $check_result->fetch_assoc();
+    $check_query = "SELECT COUNT(*) as count FROM sleep_tracker WHERE day = ?";
+    $stmt = $con->prepare($check_query);
+    $stmt->bind_param("s", $day);
+    $stmt->execute();
+    $row = $stmt->get_result()->fetch_assoc();
+    $stmt->close();
     
     if ($row['count'] > 0) {
         echo "Error: Data for $day already exists.";
@@ -28,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    
+    // Convert times to 24-hour format
     function convertTo24Hour($time) {
         return date("H:i", strtotime($time));
     }
@@ -36,22 +45,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $t1 = convertTo24Hour($sleep_time);
     $t2 = convertTo24Hour($wake_time);
 
-   
-    $sql = "INSERT INTO `sleep_tracker` (`day`, `sleep_time`, `wake_time`) VALUES ('$day', '$t1', '$t2')";
-
-    if (!$con->query($sql)) {
-        echo "Error: " . $sql . "<br>" . $con->error;
+    // Insert new data using prepared statement
+    $sql = "INSERT INTO sleep_tracker (day, sleep_time, wake_time) VALUES (?, ?, ?)";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("sss", $day, $t1, $t2);
+    
+    if (!$stmt->execute()) {
+        echo "Error: " . $stmt->error;
+        $stmt->close();
         mysqli_close($con);
         exit();
     }
+    $stmt->close();
 
-
+    // Check if there are more than 7 days of data
     $count_query = "SELECT COUNT(*) as total FROM sleep_tracker";
     $count_result = $con->query($count_query);
     $count_row = $count_result->fetch_assoc();
 
     if ($count_row['total'] > 7) {
-        
+        // Delete the oldest entry
         $delete_query = "DELETE FROM sleep_tracker WHERE id = (SELECT MIN(id) FROM sleep_tracker)";
         $con->query($delete_query);
     }

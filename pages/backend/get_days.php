@@ -1,13 +1,24 @@
 <?php
+session_start();
+
+// Check if user is logged in
+if (!isset($_SESSION['mysql_username']) || !isset($_SESSION['mysql_password'])) {
+    header('Content-Type: application/json');
+    echo json_encode([]);
+    exit();
+}
+
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = $_SESSION['mysql_username'];
+$password = $_SESSION['mysql_password']; // Can be empty
 $dbname = "sleep_tracker";
 
 $con = mysqli_connect($servername, $username, $password, $dbname);
 
 if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
+    header('Content-Type: application/json');
+    echo json_encode([]);
+    exit();
 }
 
 $query = "SELECT day FROM sleep_tracker";
