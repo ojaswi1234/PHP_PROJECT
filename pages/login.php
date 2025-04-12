@@ -20,7 +20,7 @@ session_start();
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color:rgb(239, 249, 255);
+            background-color:rgb(224, 240, 249);
         }
         #login-div {
             display: flex;
@@ -31,7 +31,7 @@ session_start();
         #login-form {
             width: 400px;
             padding: 44px;
-            border: 2px solid #2c3e50;
+            border: 1px solid #2c3e50;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
@@ -40,6 +40,7 @@ session_start();
             background-color: #ecf0f1;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: 0.3s ease-in-out;
+
             
         }
         #login-form > h1 {
@@ -91,9 +92,9 @@ session_start();
 <body>
     <div id="login-div">
         <form method="post" action="../pages/backend/login_handler.php" id="login-form">
-            <h1>SleepSense Login</h1>
+            <h1><mark style="padding: 7px; background-color:  #2c3e50; color: white;">SleepSense</mark> Login</h1>
             <label for="username">MySQL Username</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" placefolder="Enter your MYSQL username....." required>
             <label for="password">MySQL Password</label>
             <input type="password" id="password" name="password">
             <input type="submit" value="Login">

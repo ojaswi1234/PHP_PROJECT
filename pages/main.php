@@ -79,8 +79,8 @@
                     <div style="min-width: 150px;">
                         <h4 style="color: #eee; margin-bottom: 10px;">Follow Us</h4>
                         <a href="#" style="color: #bbb; text-decoration: none; margin: 0 5px; transition: color 0.3s;" onmouseover="this.style.color='pink';" onmouseout="this.style.color='#bbb';">Instagram</a> |
-                        <a href="#" style="color: #bbb; text-decoration: none; margin: 0 5px; transition: color 0.3s;" onmouseover="this.style.color='green';" onmouseout="this.style.color='#bbb';">Github</a> |
-                        <a href="#" style="color: #bbb; text-decoration: none; margin: 0 5px; transition: color 0.3s;" onmouseover="this.style.color='lightblue';" onmouseout="this.style.color='#bbb';">LinkedIn</a>
+                        <a href="https://www.github.com/ojaswi1234" style="color: #bbb; text-decoration: none; margin: 0 5px; transition: color 0.3s;" onmouseover="this.style.color='green';" onmouseout="this.style.color='#bbb';">Github</a> |
+                        <a href="https://www.linkedin.com/in/ojaswi-bhardwaj-962393281/" style="color: #bbb; text-decoration: none; margin: 0 5px; transition: color 0.3s;" onmouseover="this.style.color='lightblue';" onmouseout="this.style.color='#bbb';">LinkedIn</a>
                     </div>
                 </div>
                 <hr style="border: none; height: 1px; background-color: #333; margin: 20px 0;">

@@ -461,7 +461,7 @@
                 <span></span>
                 <ul id="menu">
                     <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
-                    <li><label for="menuBox"><a href="#">Resources</a></label></li>
+                    <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
         
                     <li><label for="menuBox"><a href="../pages/main.php">Home</a></label></li>
                   </ul>

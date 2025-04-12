@@ -356,7 +356,7 @@ header {
         display: block;
         position: absolute;
         top: 50%;
-        right: 130px;
+        right: -2px;
         transform: translateY(-50%);
         -webkit-user-select: none;
         user-select: none;
@@ -484,7 +484,7 @@ header {
             <a href="#" id="button-2">Resources<span></span></a>
 
           
-            <a href="../pages/tracker.php" id="button-5">Get Started</a>
+            <a href="../pages/main.php" id="button-5">Home</a>
         </nav>
         <nav id="mobile-nav">
            <div id="menuToggle">
@@ -496,7 +496,7 @@ header {
                 <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                 <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
                 
-                <li><label for="menuBox"><a href="../pages/tracker.php">Get Started</a></label></li>
+                <li><label for="menuBox"><a href="../pages/main.php">Home</a></label></li>
               </ul>
            </div>
         </nav>
@@ -507,9 +507,9 @@ header {
             <h2>Resources</h2>
             <p>For more information on sleep health, consider visiting:</p>
             <ul>
-                <li><a href="#">National Sleep Foundation</a></li>
-                <li><a href="#">American Academy of Sleep Medicine</a></li>
-                <li><a href="#">Sleep Research Society</a></li>
+                <li><a href="https://www.thensf.org/about-sleeptech/">National Sleep Foundation</a></li>
+                <li><a href="https://aasm.org/about/">American Academy of Sleep Medicine</a></li>
+                <li><a href="https://sleepresearchsociety.org/about/who-we-are/">Sleep Research Society</a></li>
             </ul>
         </section>
         </main>
