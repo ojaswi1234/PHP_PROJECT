@@ -358,7 +358,7 @@ form:hover::after {
         display: block;
         position: absolute;
         top: 50%;
-        right: 130px;
+        right: -2px;
         transform: translateY(-50%);
         -webkit-user-select: none;
         user-select: none;
@@ -483,7 +483,7 @@ form:hover::after {
             <a href="../pages/about.php" id="button-1" >About Sleep<span></span></a>
             <a href="#" id="button-2">Resources</a>
          
-            <a href="#" id="button-4">Contact Us</a>
+            
             <a href="../pages/main.php" id="button-5">Log Out</a>
         </nav>
         <nav id="mobile-nav">
@@ -495,8 +495,8 @@ form:hover::after {
             <ul id="menu">
                 <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                 <li><label for="menuBox"><a href="#">Resources</a></label></li>
-                <li><label for="menuBox"><a href="#">Contact Us</a></label></li>
-                <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
+               
+                <li><label for="menuBox"><a href="../pages/main.php">Log Out</a></label></li>
               </ul>
            </div>
         </nav>

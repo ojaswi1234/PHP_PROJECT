@@ -156,7 +156,7 @@
             display: block;
             position: absolute;
             top: 50%;
-            right: 130px;
+            right: -2px;
             transform: translateY(-50%);
             -webkit-user-select: none;
             user-select: none;
@@ -186,6 +186,7 @@
             display: block;
             width: 33px;
             height: 4px;
+           
             margin-bottom: 5px;
             position: relative;
             background: #cdcdcd;
@@ -428,7 +429,16 @@
         
         #graph-section canvas {
             width: 80%;
-            height: 400px }
+            height: 400px;
+            padding: 64px;
+        }
+
+        #graph-section p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
@@ -440,7 +450,7 @@
         <nav id="main-nav">
             <a href="#" id="button-1">About Sleep<span></span></a>
             <a href="#" id="button-2">Resources</a>
-            <a href="#" id="button-4">Contact Us</a>
+           
             <a href="../pages/main.php" id="button-5">Home</a>
         </nav>
         <nav id="mobile-nav">
@@ -452,7 +462,7 @@
                 <ul id="menu">
                     <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                     <li><label for="menuBox"><a href="#">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="#">Contact Us</a></label></li>
+        
                     <li><label for="menuBox"><a href="../pages/main.php">Home</a></label></li>
                   </ul>
                </div>
@@ -463,7 +473,7 @@
         <section id="hero-section">
             <h1>Welcome to SleepSense</h1>
             <p>Your guide to understanding sleep cycles and disorders.</p>
-            <img src="https://images.unsplash.com/photo-1517497218325-5b0d8d0d4a9d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Sleep Image" style="width: 100%; max-width: 600px; border-radius: 10px;">
+           
         </section>
 
         <section id="sleep-cycle-section">
@@ -495,22 +505,10 @@
             <canvas id="sleepDisordersChart"></canvas>
         </section>
 
-        <section id="resources-section">
-            <h2>Resources</h2>
-            <p>For more information on sleep health, consider visiting:</p>
-            <ul>
-                <li><a href="#">National Sleep Foundation</a></li>
-                <li><a href="#">American Academy of Sleep Medicine</a></li>
-                <li><a href="#">Sleep Research Society</a></li>
-            </ul>
-        </section>
+       
     </main>
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('sleepDisordersChart').getContext('2d');

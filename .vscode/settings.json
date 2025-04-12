@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 8080,
+            "driver": "MariaDB",
+            "database": "sleep_tracker",
+            "username": "root",
+            "name": "Sleep_tracker",
+            "connectionTimeout": 15,
+            "password": ""
+        }
+    ]
+}

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -16,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sleep_time = $_POST['sleep-time'];
     $wake_time = $_POST['wakeup-time'];
     $day = $_POST['day'];
+   
 
     function convertTo24Hour($time) {
         return date("H:i", strtotime($time));

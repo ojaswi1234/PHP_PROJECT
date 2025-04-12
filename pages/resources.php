@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body, html {
@@ -12,6 +20,10 @@ main {
     width: 100%;
     height: 100%;
     background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -140,7 +152,7 @@ header {
         display: block;
         position: absolute;
         top: 50%;
-        right: 150px;
+        right: -2px;
         transform: translateY(-50%);
         -webkit-user-select: none;
         user-select: none;
@@ -344,7 +356,7 @@ header {
         display: block;
         position: absolute;
         top: 50%;
-        right: -1px;
+        right: 130px;
         transform: translateY(-50%);
         -webkit-user-select: none;
         user-select: none;
@@ -455,165 +467,49 @@ header {
   transform: translate(0, 0);
 }
   }
-
-#hero-img {
+  #hero-img {
     background-color: #F8F9FA;
     border-radius: 100%;
 }
+</style>
+<body>
+<header style="position: sticky; top: 0; z-index: 1000;">
+        <div id="logo">
+        <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="">
+            <a href="../pages/main.php" style="text-decoration: none;
+    color: white;"> SLEEPSENSE</a>
+        </div>
+        <nav id="main-nav">
+            <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
+            <a href="#" id="button-2">Resources<span></span></a>
 
-#main-title {
-    font-size: 2rem;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    font-weight: 900;
-    position: relative;
-    right: 24px;
-    /*-webkit-text-stroke: 2px #ffffff;*/
-    color: white;
-}
+          
+            <a href="../pages/tracker.php" id="button-5">Get Started</a>
+        </nav>
+        <nav id="mobile-nav">
+           <div id="menuToggle">
+            <input type="checkbox" id="menuBox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
+                <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
+                
+                <li><label for="menuBox"><a href="../pages/tracker.php">Get Started</a></label></li>
+              </ul>
+           </div>
+        </nav>
 
-b {
-    font-size: 3rem;
-    color: rgb(3, 146, 255)
-}
-
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#div-1 {
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    transform: translateY(15%);
-    top: 10%;
-    overflow: hidden;
-    margin-top: 10px;
-    padding-bottom: 15%;
-
-}
-
-#cover-img {
-    width: 90%;
-    height: 90%;
-    object-fit: cover;
-    border-radius: 10px;
-    filter: blur(-100px);
-}
-
-
-
-#div-2 {
-    width: 100%;
-    height: fit-content;
-    background-color:#F8F9FA;
-    padding: 44px;
-    margin-top: 10px;
-}
-
-#div-2-1 {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#myChart, #myChart2 {
-    width: 100%;
-    max-width: 630px;
-    height: 100%;
-    min-height: 400px;
-    background-color: #e2e7e8;
-    border-radius: 10px;
-    padding: 32px;
-}
-
-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    filter:  invert(100) sepia(100%) saturate(500%) hue-rotate(180deg);
-}
-
-
-#h-2 {
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 2.5rem;
-}
-
-#p-1 {
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1rem;
-    padding-bottom: 24px;
-}
-
-#hr1 {
-    width: 100%;
-    height: 10px;
-    background-color: #B0B0B0;
-    filter: blur(52px);
-    transform: translateY(-16px);
-}
-
-
-
-#div-3{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-#aside-2{
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 44px;
-}
-
-
-#aside-3{
-    height: 50%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-   
-}
-#aside-3 > #h-3{
-    font-family: "Poppins", sans-serif;
-    font-size: 2.7rem;
-    color: #2c3e50;
-}
-#aside-3 > #p-2{
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    color: #2c3e50;
-}
-
-
-
-#aside-1{
-  width: 35%;
-}
+    </header>
+    <main>
+<section id="resources-section">
+            <h2>Resources</h2>
+            <p>For more information on sleep health, consider visiting:</p>
+            <ul>
+                <li><a href="#">National Sleep Foundation</a></li>
+                <li><a href="#">American Academy of Sleep Medicine</a></li>
+                <li><a href="#">Sleep Research Society</a></li>
+            </ul>
+        </section>
+        </main>

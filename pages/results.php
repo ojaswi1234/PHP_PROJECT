@@ -10,6 +10,7 @@ session_start();
   <title>SleepSense</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');  
+    
     body, html {
       width: 100%;
       height: 100%;
@@ -27,7 +28,7 @@ session_start();
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: row-reverse;
+      flex-direction: column-reverse;
     }
 
     header {
@@ -45,7 +46,7 @@ session_start();
     #main-nav {
       width: 100%;
       height: 90%;
-      margin-left: 40%;
+      margin-left: 50%;
       display: flex;
       flex-direction: row;
       justify-content: end;
@@ -167,7 +168,7 @@ session_start();
         display: block;
         position: absolute;
         top: 50%;
-        right: 130px;
+        right: -10px;
         transform: translateY(-50%);
         -webkit-user-select: none;
         user-select: none;
@@ -267,11 +268,36 @@ session_start();
       #menuToggle input:checked ~ ul {
         transform: translate(0, 0);
       }
+      #result-div{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #F5F5F5;
+      border: none;
+      
+     }
+    #chart-container {
+    width: 100%;
+    height: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    scale: 200%;
+    border: 2px solid #4FC3F7;
+  }
+  #chart-container > canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
     }
 
     
 
-    #chart-container{
+  #chart-container{
       width: 50%;
       height: 50%;
       display: flex;
@@ -279,7 +305,19 @@ session_start();
       align-items: center;
       flex-direction: column;
       padding: 44px;
-    }
+  }
+  
+    #result-div{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #F5F5F5;
+      border: none;
+      
+     }
   </style>
 </head>
 <body>
@@ -291,9 +329,9 @@ session_start();
     </div>
     <nav id="main-nav">
       <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
-      <a href="#" id="button-2">Resources</a>
-      <a href="#" id="button-4">Contact Us</a>
-      <a href="../pages/main.php">Log Out</a>
+      <a href="../pages/resources.php" id="button-2">Resources</a>
+   
+      <a href="../pages/main.php" id="button-5">Log Out</a>
     </nav>
     <nav id="mobile-nav">
       <div id="menuToggle">
@@ -303,9 +341,9 @@ session_start();
         <span></span>
         <ul id="menu">
           <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
-          <li><label for="menuBox"><a href="#">Resources</a></label></li>
-          <li><label for="menuBox"><a href="#">Contact Us</a></label></li>
-          <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
+          <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
+         
+          <li><label for="menuBox"><a href="../pages/main.php">Log Out</a></label></li>
         </ul>
       </div>
     </nav>
@@ -316,10 +354,11 @@ session_start();
       if(isset($_SESSION['average_sleep_hours'])) {
         echo "<h2>Average Sleep Hours for the Week: " . round($_SESSION['average_sleep_hours'], 2) . " hours</h2>";
       } else {
-        echo "<h2>No data available</h2>";
+        echo "<h2>No data available. please enter your data in <a href='../pages/tracker.php'>Tracker form</a></h2> and ";
       }
 
       $hours= $_SESSION['average_sleep_hours'];
+
       if(isset($hours)){
       if($hours < 6) {
         echo "<h3>It seems like you are not getting enough sleep. Please try to get at least 6 hours of sleep per day.</h3>";
@@ -333,11 +372,11 @@ session_start();
         echo " ";
       }
       ?>
-    </div>
+    
     <div id="chart-container">
         <canvas id="chart1"></canvas>
-        
-      </div>
+    </div>
+  </div>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <script>
