@@ -19,7 +19,7 @@
             <a href="../pages/resources.php" id="button-2">Resources<span></span></a>
 
           
-            <a href="../pages/login.php" id="button-5">Get Started</a>
+            <a href="../pages/tracker.php" id="button-5">Get Started</a>
         </nav>
         <nav id="mobile-nav">
            <div id="menuToggle">
@@ -31,7 +31,7 @@
                 <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                 <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
                 
-                <li><label for="menuBox"><a href="../pages/login.php">Get Started</a></label></li>
+                <li><label for="menuBox"><a href="../pages/tracker.php">Get Started</a></label></li>
               </ul>
            </div>
         </nav>
