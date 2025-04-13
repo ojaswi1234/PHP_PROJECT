@@ -1,7 +1,7 @@
 # SLEEP_SENSE
 
 ## Overview
-This project is a web application built using PHP, Hack, and CSS. It serves as a demonstration of robust backend functionality combined with a modern and responsive frontend design.
+This project is a web application built using PHP, JavaScript, HTML & CSS. It serves as a demonstration of robust backend functionality combined with a modern and responsive frontend design.
 
 ## Features
 - **Dynamic Web Pages**: Powered by PHP for server-side scripting.
@@ -13,6 +13,8 @@ To run this project, ensure you have the following installed:
 - PHP (version 7.4 or later)
 - A web server (e.g., Apache or Nginx)
 - Composer (for dependency management)
+- xaamp
+- MySQL
 
 ## Installation
 1. Clone the repository:
