@@ -1,4 +1,4 @@
-# PHP_PROJECT
+# SLEEP_SENSE
 
 ## Overview
 This project is a web application built using PHP, Hack, and CSS. It serves as a demonstration of robust backend functionality combined with a modern and responsive frontend design.
