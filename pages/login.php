@@ -149,18 +149,9 @@ session_start();
             width: 100%;
         }
 
-        #warning {
-            color: #facc15;
-            font-size: 0.85rem;
-            text-align: center;
-            margin-top: 10px;
-            background: rgba(250, 204, 21, 0.1);
-            padding: 8px;
-            border-radius: 5px;
-            width: 100%;
-        }
+       
 
-        /* Floating particles for background effect */
+      
         .particles {
             position: absolute;
             top: 0;
@@ -183,7 +174,7 @@ session_start();
             50% { transform: translateY(-20px); }
         }
 
-        /* Responsive adjustments */
+      
         @media (max-width: 480px) {
             #login-form {
                 width: 90%;
@@ -219,7 +210,7 @@ session_start();
                 unset($_SESSION['login_error']);
             }
             ?>
-            <p id="warning">Note: Using an empty password is not recommended for security reasons.</p>
+           
         </form>
     </div>
     <div class="particles">

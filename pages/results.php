@@ -385,6 +385,10 @@ if (!isset($_SESSION['mysql_username'])) {
                 margin: 10px;
                 width: 100%;
                 height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
 
             #result-div h2 {
