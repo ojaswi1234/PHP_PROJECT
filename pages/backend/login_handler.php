@@ -4,13 +4,12 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
     $username = $_POST['username'];
-    $password = $_POST['password']; // Can be empty
-
-    // Store credentials in session
+    $password = $_POST['password']; 
+   
     $_SESSION['mysql_username'] = $username;
     $_SESSION['mysql_password'] = $password;
 
-    // Try to connect to MySQL
+    
     $con = @mysqli_connect($servername, $username, $password);
 
     if (!$con) {
@@ -19,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Create database if it doesn't exist
+  
     $create_db_query = "CREATE DATABASE IF NOT EXISTS `sleep_tracker`";
     if (!mysqli_query($con, $create_db_query)) {
         $_SESSION['login_error'] = "Error creating database: " . mysqli_error($con);
@@ -28,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Select the database
+
     if (!mysqli_select_db($con, "sleep_tracker")) {
         $_SESSION['login_error'] = "Error selecting database: " . mysqli_error($con);
         mysqli_close($con);
@@ -36,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Create table if it doesn't exist
     $create_table_query = "
         CREATE TABLE IF NOT EXISTS sleep_tracker (
             id INT AUTO_INCREMENT PRIMARY KEY,

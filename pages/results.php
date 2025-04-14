@@ -1,9 +1,32 @@
 <?php
 session_start();
 
-// Redirect to login if not authenticated
+// check if the user is logged in
 if (!isset($_SESSION['mysql_username'])) {
     header("Location: ../login.php");
+    exit();
+}
+
+// Handle CSV download
+if (isset($_POST['download_csv'])) {
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment; filename="sleep_results_' . date('Ymd_His') . '.csv"');
+    
+    $output = fopen('php://output', 'w');
+    fputcsv($output, ['Day', 'Sleep Hours']);
+    
+    if (isset($_SESSION['daywise_hours'])) {
+        $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        foreach ($days as $day) {
+            $hours = isset($_SESSION['daywise_hours'][$day]) ? round($_SESSION['daywise_hours'][$day], 2) : 0;
+            fputcsv($output, [$day, $hours]);
+        }
+        if (isset($_SESSION['average_sleep_hours'])) {
+            fputcsv($output, ['Average', round($_SESSION['average_sleep_hours'], 2)]);
+        }
+    }
+    
+    fclose($output);
     exit();
 }
 ?>
@@ -17,7 +40,6 @@ if (!isset($_SESSION['mysql_username'])) {
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');  
 
-       
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -37,41 +59,34 @@ if (!isset($_SESSION['mysql_username'])) {
             display: none;
         }
 
-       
         header {
             width: 100%;
             height: 72px;
             color: white;
             background-color: #101922;
-            position: sticky;
-            padding: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
             position: fixed;
             top: 0;
+            left: 0;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             z-index: 1000;
         }
 
         #main-nav {
-            width: 100%;
-            height: 90%;
-            margin-left: 50%;
             display: flex;
             flex-direction: row;
-            justify-content: end;
             gap: 24px;
             align-items: center;
         }
 
         #main-nav > a {
             width: 130px;
-            height: 90%;
-            padding: 5px;
+            padding: 8px;
             border-radius: 10px;
             text-decoration: none;
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
             color: #F5F5F5;
@@ -79,7 +94,6 @@ if (!isset($_SESSION['mysql_username'])) {
             cursor: pointer;
             transition: 0.6s;
             font-family: "Poppins", sans-serif;
-            text-decoration: none;
             position: relative;
         }
 
@@ -119,30 +133,25 @@ if (!isset($_SESSION['mysql_username'])) {
         }
 
         #main-nav > #button-5:hover {
-            color: #ecf0f1;
-            background-color: transparent;
+            color: black;
+            background-color: white;
             font-weight: bolder;
         }
 
         #logo {
             font-size: 1.5rem;
-            font-family: "Poppins", sans-serif;
             color: #ecf0f1;
             font-weight: bolder;
             text-shadow: 2px 2px 2px #2c3e50;
-            margin-left: 1%;
             display: flex;
-            flex-direction: row;
-            justify-content: center;
             align-items: center;
             gap: 5px;
         }
 
         #mobile-nav {
-            visibility: hidden;
+            display: none;
         }
 
-        /* Main Container */
         main {
             width: 100%;
             min-height: calc(100vh - 72px);
@@ -151,6 +160,7 @@ if (!isset($_SESSION['mysql_username'])) {
             align-items: center;
             padding: 40px 20px;
             animation: fadeIn 1s ease;
+            margin-top: 72px;
         }
 
         @keyframes fadeIn {
@@ -158,7 +168,6 @@ if (!isset($_SESSION['mysql_username'])) {
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Result Container */
         #result-div {
             width: 100%;
             max-width: 900px;
@@ -206,7 +215,6 @@ if (!isset($_SESSION['mysql_username'])) {
             color: #ffca28;
         }
 
-        /* Chart Container */
         #chart-container {
             width: 100%;
             max-width: 800px;
@@ -227,59 +235,45 @@ if (!isset($_SESSION['mysql_username'])) {
             max-height: 400px !important;
         }
 
-        /* Mobile Navigation (Original) */
+        #download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4FC3F7;
+            color: #0D1B2A;
+            text-decoration: none;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background-color 0.6s ease, color 0.6s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        #download-btn:hover {
+            background-color: transparent;
+            color: #ecf0f1;
+        }
+
         @media only screen and (max-width: 727px) {
             header {
-                width: fit-content;
-                position: sticky;
-                align-items: center;
+                width: 100%;
+                padding: 14px 15px;
+                justify-content: space-between;
             }
 
-            #main-nav { 
-                visibility: hidden; 
+            #main-nav {
+                display: none;
             }
 
-            #result-div {
-                width: fit-content;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            header > #mobile-nav {
-                width: 10px;
-                height: 10px;
-                visibility: visible;
-                transform: translateX(0);
-                position: absolute;
-                top: 30%;
-                left: 53%;
-                background-color: transparent;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            #mobile-nav {
+                display: block;
             }
 
             #menuToggle {
                 display: block;
-                position: absolute;
-                top: 50%;
-                right: -10px;
-                transform: translateY(-50%);
-                -webkit-user-select: none;
-                user-select: none;
-            }
-
-            #menuToggle > ul > label > a {
-                text-decoration: none;
-                color: white;
-                transition: color 0.3s ease;
-            }
-
-            #menuToggle > a:hover {
-                color: #232323;
+                position: relative;
+                z-index: 2;
             }
 
             #menuToggle > input {
@@ -291,8 +285,7 @@ if (!isset($_SESSION['mysql_username'])) {
                 left: -5px;
                 cursor: pointer;
                 opacity: 0;
-                z-index: 2;
-                -webkit-touch-callout: none;
+                z-index: 3;
             }
 
             #menuToggle > span {
@@ -303,11 +296,11 @@ if (!isset($_SESSION['mysql_username'])) {
                 position: relative;
                 background: #cdcdcd;
                 border-radius: 3px;
-                z-index: 1;
+                z-index: 2;
                 transform-origin: 4px 0px;
                 transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                      opacity 0.55s ease;
+                            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+                            opacity 0.55s ease;
             }
 
             #menuToggle span:first-child {
@@ -334,26 +327,23 @@ if (!isset($_SESSION['mysql_username'])) {
             }
 
             #menu {
-                position: absolute;
-                max-width: 400px;
-                width: 100vw;
-                max-height: 100vh;
-                margin: -100px 0 500px -200px;
-                padding: 50px;
-                padding-top: 125px;
-                box-sizing: border-box;
-                overflow-y: auto;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 250px;
+                height: 100vh;
+                margin: 0;
+                padding: 80px 20px 20px;
                 background: #ededed;
                 list-style-type: none;
-                -webkit-font-smoothing: antialiased;
-                transform-origin: 100% 0%;
-                transform: translate(100%, 0);
+                transform: translateX(100%);
                 transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                z-index: 1;
             }
 
             #menu li {
                 padding: 10px 0;
-                font-size: 22px;
+                font-size: 1.2rem;
             }
 
             #menu li label {
@@ -372,10 +362,9 @@ if (!isset($_SESSION['mysql_username'])) {
             }
 
             #menuToggle input:checked ~ ul {
-                transform: translate(0, 0);
+                transform: translateX(0);
             }
 
-            /* Responsive Main and Chart */
             main {
                 padding: 20px 10px;
             }
@@ -401,10 +390,16 @@ if (!isset($_SESSION['mysql_username'])) {
 
             #chart-container {
                 padding: 15px;
+                max-width: 100%;
             }
 
             #chart-container canvas {
                 max-height: 300px !important;
+            }
+
+            #download-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
         }
 
@@ -429,11 +424,16 @@ if (!isset($_SESSION['mysql_username'])) {
             #chart-container canvas {
                 max-height: 250px !important;
             }
+
+            #download-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header style="background-color: #2c3e50; position: sticky; top: 0; z-index: 1000;">
+    <header style="background-color: #2c3e50;">
         <div id="logo">
             <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="" style="background-color:white; border-radius: 100%;">
             <a href="../pages/main.php" style="text-decoration: none; color: white;">SLEEPSENSE</a>
@@ -481,6 +481,11 @@ if (!isset($_SESSION['mysql_username'])) {
             <div id="chart-container">
                 <canvas id="chart1"></canvas>
             </div>
+            <?php if (isset($_SESSION['average_sleep_hours'])): ?>
+                <form method="post">
+                    <button type="submit" name="download_csv" id="download-btn">Download Results</button>
+                </form>
+            <?php endif; ?>
         </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -508,12 +513,25 @@ if (!isset($_SESSION['mysql_username'])) {
                 }]
             },
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            fontSize: 12
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontSize: 12
                         }
                     }]
+                },
+                legend: {
+                    labels: {
+                        fontSize: 12
+                    }
                 }
             }
         });

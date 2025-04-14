@@ -15,7 +15,7 @@ if (!isset($_SESSION['mysql_username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SleepSense Tracker</title>
     <style>
-        /* Existing CSS unchanged */
+       
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');  
         body, html {
             width: 100%;
@@ -99,12 +99,13 @@ if (!isset($_SESSION['mysql_username'])) {
             color: #0D1B2A;
             background-color: #4FC3F7;
             font-weight: bold;
+            transition: all 0.3s ease;
         }
         #main-nav > #button-5:hover {
-            color: #ecf0f1;
-            background-color: transparent;
-            font-weight: bolder;
-        }
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+}
         #logo {
             font-size: 1.5rem;
             font-family: "Poppins", sans-serif;
@@ -142,7 +143,7 @@ if (!isset($_SESSION['mysql_username'])) {
             display: block;
             padding-bottom: 10px;
         }
-        #tracker-form > input {
+    #tracker-form > input {
             width: 500px;
             height: 30px;
             border-radius: 5px;
@@ -151,8 +152,7 @@ if (!isset($_SESSION['mysql_username'])) {
             font-family: "Poppins", sans-serif;
             font-size: 1rem;
             outline: none;
-        }
-        #tracker-form > input[type="submit"] {
+        }#tracker-form > input[type="submit"] {
             width: 100px;
             height: 40px;
             border-radius: 5px;
@@ -186,7 +186,7 @@ if (!isset($_SESSION['mysql_username'])) {
             color: white;
             cursor: pointer;
         }
-        form {
+form {
             width: 800px;
             display: flex;
             flex-direction: column;
@@ -230,13 +230,13 @@ if (!isset($_SESSION['mysql_username'])) {
             transform: translateX(-50%);
             transition: width 0.5s, height 0.5s 0.5s;
             box-sizing: border-box;
-        }
+     }
         form:hover::before {
             width: 0;
             height: 10px;
             transition: height 0.5s, width 0.5s 0.5s;
-        }
-        form:hover::after {
+    }
+    form:hover::after {
             width: 0;
             height: 10px;
             transition: height 0.5s, width 0.5s 0.5s;
