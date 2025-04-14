@@ -3,7 +3,7 @@ session_start();
 
 // check if the user is logged in
 if (!isset($_SESSION['mysql_username'])) {
-    header("Location: ../login.php");
+    header("Location: ../pages/login.php");
     exit();
 }
 
