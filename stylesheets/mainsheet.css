@@ -196,6 +196,7 @@ video {
 }
 #div-3 {
     width: 100%;
+    
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -213,7 +214,7 @@ video {
 }
 #aside-2 img {
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
     height: auto;
 }
 #aside-3 {
@@ -236,7 +237,6 @@ video {
     margin: 0;
 }
 
-/* Tablet Styles (768px to 1200px) */
 @media (max-width: 1200px) {
     header {
         height: 50px;
@@ -299,7 +299,7 @@ video {
     }
 }
 
-/* Mobile Styles (below 768px) */
+
 @media (max-width: 768px) {
     main {
         background: url('../public/fallback-image.jpg') no-repeat center/cover;
@@ -412,7 +412,7 @@ video {
     #menuToggle input:checked ~ ul {
         transform: translate(0, 0);
     }
-    /* Close Button Styles */
+  
     #menu-close {
         position: absolute;
         top: 20px;
@@ -516,7 +516,7 @@ video {
     }
 }
 
-/* Extra Small Mobile (below 500px) */
+
 @media (max-width: 500px) {
     #logo {
         font-size: 1rem;
