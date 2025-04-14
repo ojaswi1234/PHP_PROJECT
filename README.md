@@ -1,86 +1,22 @@
-To branch and clone a repository on GitHub web and on the Git CLI, follow these steps:
+# SLEEP_SENSE
 
-On GitHub Web:
-Branch:
+## Overview
+This project is a web application built using PHP, JavaScript, HTML & CSS. It serves as a demonstration of robust backend functionality combined with a modern and responsive frontend design.
 
-Navigate to your repository.
-Click on the "main" branch dropdown.
-Type the name of your new branch in the "Find or create a branch" field.
-```sh
-Click "Create branch: <your-branch-name> from 'main'".
-```
-Clone:
+## Features
+- **Dynamic Web Pages**: Powered by PHP for server-side scripting.
+- **Efficient Code**: Utilizes Hack for enhanced performance and safety.
+- **Responsive Design**: Styled with CSS to ensure compatibility across devices.
 
-On your repository's main page, click the green "Code" button.
-Copy the URL provided under the "HTTPS" tab.
-Open your terminal and run:
-sh
-```sh
-git clone <copied-URL>
-```
-On Git CLI:
-Branch:
+## Prerequisites
+To run this project, ensure you have the following installed:
+- PHP (version 7.4 or later)
+- A web server (e.g., Apache or Nginx)
+- Composer (for dependency management)
+- xaamp
+- MySQL
 
-Navigate to your local repository in your terminal.
-Create and switch to a new branch using:
-sh
-```sh 
-git checkout -b <your-branch-name>
-```
-Clone:
-
-Open your terminal and run:
-sh
-```sh
-git clone <repository-URL>
- ```
-Navigate to the cloned repository: sh
-```sh 
-cd <repository-name>
- ```
-Replace <your-branch-name> and <repository-URL> with your desired branch name and the URL of the repository you want to clone, respectively.
-  
-1️⃣ Create a New Branch
-```sh
-git checkout -b <new-branch-name>
-```
-or
-
-```sh
-git switch -c <new-branch-name>
-```
-🔹 This creates and switches to a new branch, keeping the main code untouched.
-
-2️⃣ Add or Modify Files
-Edit or add your files, then stage them:
-```sh
-git add <file-name>
-```
-or to add all changes:
-```sh
-git add .
-```
-3️⃣ Commit the Changes
-```sh
-git commit -m "Added new feature or file"
-```
-This saves the changes in the new branch.
-
-4️⃣ Push the New Branch (Optional, if working with GitHub)
-```sh
-git push origin <new-branch-name>
-```
-🔹 This uploads your new branch to the remote repo without affecting main.
-
-5️⃣ Merge into Main (Later, if needed)
-Once your changes are complete and tested, you can merge them into main:
-```sh
-git checkout main
-git merge <new-branch-name>
-```
-If working with GitHub, you can open a Pull Request (PR) instead.
-Navigate to the cloned repository: sh
-```sh 
-cd <repository-name>
- ```
-Replace <your-branch-name> and <repository-URL> with your desired branch name and the URL of the repository you want to clone, respectively.
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ojaswi1234/PHP_PROJECT.git
