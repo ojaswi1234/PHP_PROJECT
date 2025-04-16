@@ -6,6 +6,10 @@
     <title>SleepSense</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');  
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body, html {
             width: 100%;
             height: 100%;
@@ -17,194 +21,162 @@
             background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
         }
 
-        /* Header styles remain unchanged */
         header {
             width: 100%;
-            height: 44px;
+            height: 72px;
             color: white;
             background-color: #101922;
             position: sticky;
-            padding: 14px;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
+        }
+
+        #logo {
+            font-size: 1.5rem;
+            color: #ecf0f1;
+            font-weight: bolder;
+            text-shadow: 2px 2px 2px #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #logo img {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
         }
 
         #main-nav {
-            width: 100%;
-            height: 90%;
-            margin-left: 50%;
             display: flex;
-            flex-direction: row;
-            justify-content: end;
-            gap: 24px;
+            gap: 16px;
             align-items: center;
         }
 
         #main-nav > a {
-            width: 130px;
-            padding: 8px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            color: #F5F5F5;
-            background-color: transparent;
-            cursor: pointer;
-            transition: 0.6s;
-            font-family: "Poppins", sans-serif;
-            text-decoration: none;
-            position: relative;
-        }
-
-        #main-nav > #button-1::after,
-        #main-nav > #button-2::after,
-        #main-nav > #button-3::after,
-        #main-nav > #button-4::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 1px;
-            bottom: 0;
-            left: 0;
-            background-color: orange;
-            transform-origin: bottom right;
-            transition: transform 0.25s ease-in-out;
-        }
-
-        #main-nav > #button-1:hover,
-        #main-nav > #button-2:hover,
-        #main-nav > #button-4:hover {
-            color: orange;
-        } 
-
-        #main-nav > #button-1:hover::after,
-        #main-nav > #button-2:hover::after,
-        #main-nav > #button-4:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        #main-nav > #button-5 {
-            color: #0D1B2A;
-            background-color: #4FC3F7;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        #main-nav > #button-5:hover {
+    width: 130px;
+    padding: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    position: relative;
+}
+#main-nav > #button-1:hover,
+#main-nav > #button-2:hover {
+    color: orange;
+}
+#main-nav > #button-1::after,
+#main-nav > #button-2::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: orange;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-in-out;
+}
+#main-nav > #button-1:hover::after,
+#main-nav > #button-2:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+#main-nav > #button-5 {
+    width: 130px;
+    padding: 8px;
+    color: black;
+    background-color: #4FC3F7;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+#main-nav > #button-5:hover {
     color: black;
     background-color: white;
     box-shadow: 0 0 10px rgb(255, 255, 255);
 }
 
-        #logo {
-            font-size: 1.5rem;
-            font-family: "Poppins", sans-serif;
-            color: #ecf0f1;
-            font-weight: bolder;
-            text-shadow: 2px 2px 2px #2c3e50;
-            margin-left: 1%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-        }
-
         #mobile-nav {
-            visibility: hidden;
+            display: none;
         }
 
-        @media only screen and (max-width: 727px) {
+        @media only screen and (max-width: 768px) {
             header {
-                width: fit-content;
-                position: sticky;
-                align-items: center;
+                height: 56px;
+                padding: 10px 15px;
             }
 
-            #main-nav { 
-                visibility: hidden; 
+            #main-nav {
+                display: none;
             }
 
-            header > #mobile-nav {
-                width: 10px;
-                height: 10px;
-                visibility: visible;
-                transform: translateX(0);
-                position: absolute;
-                top: 30%;
-                left: 53%;
-                background-color: transparent;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            #mobile-nav {
+                display: block;
             }
 
             #menuToggle {
-                display: block;
-                position: absolute;
-                top: 50%;
-                right: -2px;
-                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                width: 40px;
+                height: 40px;
+                z-index: 1001;
                 -webkit-user-select: none;
                 user-select: none;
             }
 
-            #menuToggle > ul > label > a {
-                text-decoration: none;
-                color: white;
-                transition: color 0.3s ease;
-            }
-
-            #menuToggle > a:hover {
-                color: #232323;
-            }
-
-            #menuToggle > input {
+            #menuToggle input {
                 display: block;
-                width: 40px;
-                height: 32px;
+                width: 100%;
+                height: 100%;
                 position: absolute;
-                top: -7px;
-                left: -5px;
+                top: 0;
+                left: 0;
                 cursor: pointer;
                 opacity: 0;
                 z-index: 2;
-                -webkit-touch-callout: none;
             }
 
-            #menuToggle > span {
+            #menuToggle span {
                 display: block;
-                width: 33px;
-                height: 4px;
+                width: 28px;
+                height: 3px;
                 margin-bottom: 5px;
                 position: relative;
                 background: #cdcdcd;
                 border-radius: 3px;
                 z-index: 1;
-                transform-origin: 4px 0px;
-                transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                            opacity 0.55s ease;
+                transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                           background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                           opacity 0.55s ease;
             }
 
-            #menuToggle span:first-child {
-                transform-origin: 0% 0%;
-            }
-
-            #menuToggle span:nth-last-child(2) {
-                transform-origin: 0% 100%;
+            #menuToggle span:last-child {
+                margin-bottom: 0;
             }
 
             #menuToggle input:checked ~ span {
                 opacity: 1;
                 transform: rotate(45deg) translate(-2px, -1px);
-                background: #232323;
+                background: white;
+                
             }
 
             #menuToggle input:checked ~ span:nth-last-child(3) {
@@ -217,100 +189,91 @@
             }
 
             #menu {
-                position: absolute;
-                max-width: 400px;
-                width: 100vw;
-                max-height: 100vh;
-                margin: -100px 0 500px -200px;
-                padding: 50px;
-                padding-top: 125px;
-                box-sizing: border-box;
-                overflow-y: auto;
-                background: #ededed;
+                position: fixed;
+                top: 56px;
+                right: 0;
+                width: 200px;
+                max-width: 80vw;
+                height: calc(100vh - 56px);
+                margin: 0;
+                padding: 20px;
+                background: #ffffff;
+                color: black;
                 list-style-type: none;
-                -webkit-font-smoothing: antialiased;
-                transform-origin: 100% 0%;
-                transform: translate(100%, 0);
+                transform: translateX(100%);
                 transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                overflow-y: auto;
+                z-index: 1000;
             }
 
             #menu li {
-                padding: 10px 0;
-                font-size: 22px;
+                padding: 15px 0;
+                font-size: 1rem;
             }
 
-            #menu li label {
-                cursor: pointer;
-            }
-
-            #menu > li > label > a {
+            #menu a {
+                color: black;
                 text-decoration: none;
-                color: black !important;
-                font-family: "Poppins", sans-serif !important;
                 transition: color 0.3s ease;
             }
 
-            #menu > li > label > a:hover {
-                color: orange !important;
+            #menu a:hover {
+                color: orange;
             }
 
             #menuToggle input:checked ~ ul {
-                transform: translate(0, 0);
-            }
-
-            body > main {
-                width: 90%;
-                height: 100%;
-                background-color: transparent;
+                transform: translateX(0);
             }
         }
 
-       
         main {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px 10px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 20px;
         }
 
         section {
+            width: 100%;
+            max-width: calc(100% - 20px);
+            margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
         }
 
         section:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         h1, h2 {
             color: #0D1B2A;
             text-align: center;
+            margin: 0 0 15px;
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
             background: linear-gradient(45deg, #0288d1, #4fc3f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
         }
 
         p, ul {
             color: #34495e;
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         ul {
@@ -320,20 +283,20 @@
 
         ul li {
             position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
+            padding-left: 25px;
+            margin-bottom: 10px;
         }
 
         ul li::before {
-            content: '🌙';
+            content: ' ';
             position: absolute;
             left: 0;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         #hero-section {
             text-align: center;
-            padding: 60px 40px;
+            padding: 40px 20px;
             background: linear-gradient(135deg, #0288d1, #4fc3f7);
             color: white;
             position: relative;
@@ -341,15 +304,14 @@
         }
 
         #hero-section h1 {
-            font-size: 4rem;
-            margin-bottom: 15px;
+            font-size: 2.8rem;
             -webkit-text-fill-color: white;
         }
 
         #hero-section p {
-            font-size: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
+            font-size: 1.2rem;
+            max-width: 90%;
+            margin: 0 auto 20px;
             color: #e0f7fa;
         }
 
@@ -372,32 +334,51 @@
 
         #graph-section canvas {
             width: 100% !important;
-            max-height: 400px;
+            max-height: 300px;
             background: #fff;
-            border-radius: 10px;
-            padding: 20px;
+            border-radius: 8px;
+            padding: 10px;
         }
 
-   
         footer {
             background: #0D1B2A;
             color: white;
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
-            margin-top: 40px;
+            margin-top: 20px;
+            width: 100%;
         }
 
-       
-   </style>
+        @media only screen and (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            #hero-section h1 { font-size: 2.2rem; }
+            #hero-section p { font-size: 1rem; }
+            section { 
+                padding: 15px;
+                max-width: calc(100% - 10px);
+            }
+            #graph-section canvas { max-height: 250px; }
+            main { padding: 15px 5px; }
+            #menuToggle {
+                width: 36px;
+                height: 36px;
+            }
+            #menu {
+                width: 180px;
+                max-width: 75vw;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header style="background-color: #0D1B2A; position: sticky; top: 0; z-index: 1000;">
+    <header>
         <div id="logo">
-            <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="SleepSense Logo" style="background-color:white; border-radius: 100%;">
+            <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" alt="SleepSense Logo">
             <a>SLEEPSENSE</a>
         </div>
         <nav id="main-nav">
-            <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
+            <a href="../pages/about.php" id="button-1">About Sleep</a>
             <a href="../pages/resources.php" id="button-2">Resources</a>
             <a href="../pages/main.php" id="button-5">Home</a>
         </nav>
@@ -408,9 +389,9 @@
                 <span></span>
                 <span></span>
                 <ul id="menu">
-                    <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/main.php">Home</a></label></li>
+                    <li><a href="../pages/about.php">About Sleep</a></li>
+                    <li><a href="../pages/resources.php">Resources</a></li>
+                    <li><a href="../pages/main.php">Home</a></li>
                 </ul>
             </div>
         </nav>
@@ -420,7 +401,7 @@
         <section id="hero-section">
             <h1>Discover SleepSense</h1>
             <p>Embark on a journey to better sleep with our comprehensive guide to understanding sleep cycles, disorders, and wellness tips for a restful night.</p>
-            <a href="#sleep-cycle-section" style="display: inline-block; padding: 15px 30px; background: #fff; color: #0288d1; text-decoration: none; border-radius: 50px; font-weight: 600; transition: background 0.3s ease;">Learn More</a>
+            <a href="#sleep-cycle-section" style="display: inline-block; padding: 12px 24px; background: #fff; color: #0288d1; text-decoration: none; border-radius: 25px; font-weight: 600; transition: background 0.3s ease;">Learn More</a>
         </section>
 
         <section id="sleep-cycle-section">
@@ -467,7 +448,7 @@
     </main>
 
     <footer>
-    <p style="color: white;">© 2025 SleepSense. All rights reserved. </p>
+        <p>© 2025 SleepSense. All rights reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -508,6 +489,7 @@
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -526,10 +508,15 @@
                 plugins: {
                     legend: {
                         position: 'top',
+                        labels: {
+                            font: {
+                                size: 12
+                            }
+                        }
                     },
                     tooltip: {
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                        borderRadius: 10,
+                        borderRadius: 8,
                     }
                 }
             }

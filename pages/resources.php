@@ -6,6 +6,10 @@
     <title>SleepSense - Resources</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');  
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body, html {
             width: 100%;
             margin: 0;
@@ -16,59 +20,75 @@
             background: linear-gradient(135deg, #f3e7ff 0%, #b3d4fc 100%);
         }
 
-        /* Header styles remain unchanged */
         header {
             width: 100%;
-            height: 44px;
+            height: 72px;
             color: white;
             background-color: #101922;
             position: sticky;
-            padding: 14px;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
+        }
+
+        #logo {
+            font-size: 1.5rem;
+            color: #ecf0f1;
+            font-weight: bolder;
+            text-shadow: 2px 2px 2px #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #logo > a {
+            text-decoration: none;
+            color: #ecf0f1;
+            font-size: 1.5rem;
+            
+            transition: color 0.3s ease;
+        }
+
+        #logo img {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
         }
 
         #main-nav {
-            width: 100%;
-            height: fit-content;
-            margin-left: 50%;
             display: flex;
-            flex-direction: row;
-            justify-content: end;
-            gap: 24px;
+            gap: 16px;
             align-items: center;
         }
 
         #main-nav > a {
             width: 130px;
-            height: 90%;
-            padding: 5px;
+            padding: 8px;
             border-radius: 10px;
             text-decoration: none;
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
             color: white;
             background-color: transparent;
             cursor: pointer;
-            transition: 0.6s;
+            transition: color 0.3s ease;
             font-family: "Poppins", sans-serif;
-            text-decoration: none;
+            font-size: 1rem;
             position: relative;
         }
 
         #main-nav > #button-1:hover,
-        #main-nav > #button-2:hover,
-        #main-nav > #button-4:hover {
+        #main-nav > #button-2:hover {
             color: orange;
-        } 
+        }
 
         #main-nav > #button-1::after,
-        #main-nav > #button-2::after,
-        #main-nav > #button-3::after,
-        #main-nav > #button-4::after {
+        #main-nav > #button-2::after {
             content: '';
             position: absolute;
             width: 100%;
@@ -82,120 +102,92 @@
         }
 
         #main-nav > #button-1:hover::after,
-        #main-nav > #button-2:hover::after,
-        #main-nav > #button-4:hover::after {
+        #main-nav > #button-2:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
         }
 
         #main-nav > #button-5 {
             width: 130px;
-            height: 90%;
             padding: 8px;
             color: black;
             background-color: #4FC3F7;
             font-weight: bold;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
 
         #main-nav > #button-5:hover {
-    color: black;
-    background-color: white;
-    box-shadow: 0 0 10px rgb(255, 255, 255);
-}
-
-        #logo {
-            font-size: 1.5rem;
-            font-family: "Poppins", sans-serif;
-            color: white;
-            font-weight: bolder;
-            margin-left: 1%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
+            color: black;
+            background-color: white;
+            box-shadow: 0 0 10px rgb(255, 255, 255);
         }
 
         #mobile-nav {
-            visibility: hidden;
+            display: none;
         }
 
-        @media (max-width: 1400px) {
+        @media only screen and (max-width: 768px) {
+            header {
+                height: 56px;
+                padding: 10px 15px;
+            }
+
+            #main-nav {
+                display: none;
+            }
+
             #mobile-nav {
-                width: 10px;
-                height: 10px;
-                visibility: visible;
-                transform: translateX(0);
-                position: absolute;
-                top: 30%;
-                background-color: transparent;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                display: block;
             }
 
             #menuToggle {
-                display: block;
-                position: absolute;
-                top: 50%;
-                right: -2px;
-                transform: translateY(-50%);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                width: 40px;
+                height: 40px;
+                z-index: 1001;
                 -webkit-user-select: none;
                 user-select: none;
             }
 
-            #menuToggle > ul > label > a {
-                text-decoration: none;
-                color: white;
-                transition: color 0.3s ease;
-            }
-
-            #menuToggle > a:hover {
-                color: #232323;
-            }
-
-            #menuToggle > input {
+            #menuToggle input {
                 display: block;
-                width: 40px;
-                height: 32px;
+                width: 100%;
+                height: 100%;
                 position: absolute;
-                top: -7px;
-                left: -5px;
+                top: 0;
+                left: 0;
                 cursor: pointer;
                 opacity: 0;
                 z-index: 2;
-                -webkit-touch-callout: none;
             }
 
-            #menuToggle > span {
+            #menuToggle span {
                 display: block;
-                width: 33px;
-                height: 4px;
+                width: 28px;
+                height: 3px;
                 margin-bottom: 5px;
                 position: relative;
                 background: #cdcdcd;
                 border-radius: 3px;
                 z-index: 1;
-                transform-origin: 4px 0px;
-                transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                            opacity 0.55s ease;
+                transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                           background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                           opacity 0.55s ease;
             }
 
-            #menuToggle span:first-child {
-                transform-origin: 0% 0%;
-            }
-
-            #menuToggle span:nth-last-child(2) {
-                transform-origin: 0% 100%;
+            #menuToggle span:last-child {
+                margin-bottom: 0;
             }
 
             #menuToggle input:checked ~ span {
                 opacity: 1;
                 transform: rotate(45deg) translate(-2px, -1px);
-                background: #232323;
+                background: white;
             }
 
             #menuToggle input:checked ~ span:nth-last-child(3) {
@@ -208,87 +200,65 @@
             }
 
             #menu {
-                position: absolute;
-                max-width: 400px;
-                width: 100vw;
-                max-height: 100vh;
-                margin: -100px 0 500px -200px;
-                padding: 50px;
-                padding-top: 125px;
-                box-sizing: border-box;
-                overflow-y: auto;
-                background: #ededed;
+                position: fixed;
+                top: 56px;
+                right: 0;
+                width: 200px;
+                max-width: 80vw;
+                height: calc(100vh - 56px);
+                margin: 0;
+                padding: 20px;
+                background: #ffffff;
+                color: black;
                 list-style-type: none;
-                -webkit-font-smoothing: antialiased;
-                transform-origin: 100% 0%;
-                transform: translate(100%, 0);
+                transform: translateX(100%);
                 transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                overflow-y: auto;
+                z-index: 1000;
             }
 
             #menu li {
-                padding: 10px 0;
-                font-size: 22px;
+                padding: 15px 0;
+                font-size: 1rem;
             }
 
-            #menu li label {
-                cursor: pointer;
-            }
-
-            #menu > li > label > a {
+            #menu a {
+                color: black;
                 text-decoration: none;
-                color: black !important;
-                font-family: "Poppins", sans-serif !important;
                 transition: color 0.3s ease;
             }
 
-            #menu > li > label > a:hover {
-                color: orange !important;
+            #menu a:hover {
+                color: orange;
             }
 
             #menuToggle input:checked ~ ul {
-                transform: translate(0, 0);
-            }
-        }
-
-        @media (max-width: 727px) {
-            header {
-                width: fit-content;
-                position: sticky;
-                align-items: center;
-            }
-
-            #main-nav {
-                visibility: hidden;
-            }
-
-            header > #mobile-nav {
-                width: 10px;
-                height: 10px;
-                visibility: visible;
                 transform: translateX(0);
-                position: absolute;
-                top: 30%;
-                left: 53%;
-                background-color: transparent;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .resource-grid {
-                grid-template-columns: 1fr;
             }
         }
 
-        #hero-img {
-            background-color: #F8F9FA;
-            border-radius: 100%;
+        @media only screen and (max-width: 480px) {
+            #logo {
+                font-size: 1.2rem;
+            }
+
+            #logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            #menuToggle {
+                width: 36px;
+                height: 36px;
+            }
+
+            #menu {
+                width: 180px;
+                max-width: 75vw;
+            }
         }
 
-        /* Enhanced main styles */
         main {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
@@ -358,7 +328,7 @@
         }
 
         ul li::before {
-            content: '✨';
+            content: ' ';
             position: absolute;
             left: 0;
             font-size: 1.3rem;
@@ -445,7 +415,6 @@
             font-size: 1rem;
         }
 
-        /* Footer styles */
         footer {
             background: #1a237e;
             color: white;
@@ -468,17 +437,85 @@
         footer a:hover {
             color: #ede7f6;
         }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px 15px;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            #hero-section {
+                padding: 40px 20px;
+            }
+
+            #hero-section h1 {
+                font-size: 2.8rem;
+            }
+
+            #hero-section p {
+                font-size: 1.2rem;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            #hero-section {
+                padding: 30px 15px;
+            }
+
+            #hero-section h1 {
+                font-size: 2.2rem;
+            }
+
+            #hero-section p {
+                font-size: 1rem;
+            }
+
+            p, ul {
+                font-size: 1rem;
+            }
+
+            .resource-card h3 {
+                font-size: 1.4rem;
+            }
+
+            .resource-card p {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header style="position: sticky; top: 0; z-index: 1000;">
+    <header>
         <div id="logo">
-            <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="SleepSense Logo">
-            <a href="../pages/main.php" style="text-decoration: none; color: white;">SLEEPSENSE</a>
+            <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" alt="SleepSense Logo">
+            <a href="../pages/main.php">SLEEPSENSE</a>
         </div>
         <nav id="main-nav">
-            <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
-            <a href="../pages/resources.php" id="button-2">Resources<span></span></a>
+            <a href="../pages/about.php" id="button-1">About Sleep</a>
+            <a href="../pages/resources.php" id="button-2">Resources</a>
             <a href="../pages/main.php" id="button-5">Home</a>
         </nav>
         <nav id="mobile-nav">
@@ -488,9 +525,9 @@
                 <span></span>
                 <span></span>
                 <ul id="menu">
-                    <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/main.php">Home</a></label></li>
+                    <li><a href="../pages/about.php">About Sleep</a></li>
+                    <li><a href="../pages/resources.php">Resources</a></li>
+                    <li><a href="../pages/main.php">Home</a></li>
                 </ul>
             </div>
         </nav>
@@ -542,7 +579,7 @@
     </main>
 
     <footer>
-        <p style="color: white;">© 2025 SleepSense. All rights reserved. </p>
+        <p style="color: white;">© 2025 SleepSense. All rights reserved.</p>
     </footer>
 </body>
 </html>
