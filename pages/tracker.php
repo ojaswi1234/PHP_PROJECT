@@ -497,7 +497,16 @@ if (!isset($_SESSION['mysql_username'])) {
         <nav id="main-nav">
             <a href="../pages/about.php" id="button-1">About Sleep</a>
             <a href="../pages/resources.php" id="button-2">Resources</a>
-            <a href="../pages/backend/logout.php" id="button-5">Log Out</a>
+            <a href="#" id="button-5" onclick="confirmLogout()">Log Out</a>
+            <script>
+                function confirmLogout() {
+                    if (confirm('After clicking Log Out, the all data that you have stored till now will be deleted. Do you want to continue logging out?')) {
+                        window.location.href = '../pages/backend/logout.php';
+                    } else {
+                        alert('Please download your data before logging out.');
+                    }
+                }
+            </script>
         </nav>
         <nav id="mobile-nav">
             <div id="menuToggle">
@@ -508,7 +517,7 @@ if (!isset($_SESSION['mysql_username'])) {
                 <ul id="menu">
                     <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                     <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
+                    <li><label for="menuBox"><a href="#" onclick="confirmLogout()">Log Out</a></label></li>
                 </ul>
             </div>
         </nav>

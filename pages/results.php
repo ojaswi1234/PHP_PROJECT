@@ -461,7 +461,7 @@ if (isset($_POST['download_csv'])) {
                 <ul id="menu">
                     <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                     <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
+                    <li><label for="menuBox"><a href="#" onclick="confirmLogout()">Log Out</a></label></li>
                 </ul>
             </div>
         </nav>
