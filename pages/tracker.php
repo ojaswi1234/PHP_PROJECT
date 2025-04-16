@@ -15,8 +15,11 @@ if (!isset($_SESSION['mysql_username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SleepSense Tracker</title>
     <style>
-       
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');  
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');  
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body, html {
             width: 100%;
             height: 100%;
@@ -24,59 +27,79 @@ if (!isset($_SESSION['mysql_username'])) {
             padding: 0;
             overflow-x: hidden;
             scrollbar-width: none;
+            font-family: 'Poppins', sans-serif;
+            background: whitesmoke;
         }
-        main {
-            width: 100%;
-            height: 100%;
-            background: transparent;
-        }
+
         header {
             width: 100%;
-            height: 44px;
+            height: 72px;
             color: white;
             background-color: #101922;
             position: sticky;
-            padding: 14px;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 15px;
             display: flex;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
         }
+
+        #logo {
+            font-size: 1.5rem;
+            color: #ecf0f1;
+            font-weight: bolder;
+            text-shadow: 2px 2px 2px #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #logo > a {
+            text-decoration: none;
+            color: #ecf0f1;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        #logo img {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
         #main-nav {
-            width: 100%;
-            height: 90%;
-            margin-left: 40%;
             display: flex;
-            flex-direction: row;
-            justify-content: end;
-            gap: 24px;
+            gap: 16px;
             align-items: center;
         }
+
         #main-nav > a {
             width: 130px;
-            height: 90%;
-            padding: 5px;
+            padding: 8px;
             border-radius: 10px;
             text-decoration: none;
             display: flex;
-            flex-direction: row;
             justify-content: center;
             align-items: center;
-            color: #F5F5F5;
+            color: white;
             background-color: transparent;
             cursor: pointer;
-            transition: 0.6s;
+            transition: color 0.3s ease;
             font-family: "Poppins", sans-serif;
-            text-decoration: none;
+            font-size: 1rem;
             position: relative;
         }
+
         #main-nav > #button-1:hover,
         #main-nav > #button-2:hover,
         #main-nav > #button-4:hover {
             color: orange;
-        }  
+        }
+
         #main-nav > #button-1::after,
         #main-nav > #button-2::after,
-        #main-nav > #button-3::after,
         #main-nav > #button-4::after {
             content: '';
             position: absolute;
@@ -89,39 +112,171 @@ if (!isset($_SESSION['mysql_username'])) {
             transform-origin: bottom right;
             transition: transform 0.25s ease-in-out;
         }
+
         #main-nav > #button-1:hover::after,
         #main-nav > #button-2:hover::after,
         #main-nav > #button-4:hover::after {
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+
         #main-nav > #button-5 {
-            color: #0D1B2A;
+            width: 130px;
+            padding: 8px;
+            color: black;
             background-color: #4FC3F7;
             font-weight: bold;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
+
         #main-nav > #button-5:hover {
-    color: black;
-    background-color: white;
-    box-shadow: 0 0 10px rgb(255, 255, 255);
-}
-        #logo {
-            font-size: 1.5rem;
-            font-family: "Poppins", sans-serif;
-            color: #ecf0f1;
-            font-weight: bolder;
-            text-shadow: 2px 2px 2px #2c3e50;
-            margin-left: 1%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
+            color: black;
+            background-color: white;
+            box-shadow: 0 0 10px rgb(255, 255, 255);
         }
+
         #mobile-nav {
-            visibility: hidden;
+            display: none;
         }
+
+        @media only screen and (max-width: 768px) {
+            header {
+                height: 56px;
+                padding: 10px 15px;
+            }
+
+            #main-nav {
+                display: none;
+            }
+
+            #mobile-nav {
+                display: block;
+            }
+
+            #menuToggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                width: 40px;
+                height: 40px;
+                z-index: 1001;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+
+            #menuToggle input {
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                cursor: pointer;
+                opacity: 0;
+                z-index: 2;
+            }
+
+            #menuToggle span {
+                display: block;
+                width: 28px;
+                height: 3px;
+                margin-bottom: 5px;
+                position: relative;
+                background: #cdcdcd;
+                border-radius: 3px;
+                z-index: 1;
+                transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                           background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                           opacity 0.55s ease;
+            }
+
+            #menuToggle span:last-child {
+                margin-bottom: 0;
+            }
+
+            #menuToggle input:checked ~ span {
+                opacity: 1;
+                transform: rotate(45deg) translate(-2px, -1px);
+                background: white;
+            }
+
+            #menuToggle input:checked ~ span:nth-last-child(3) {
+                opacity: 0;
+                transform: rotate(0deg) scale(0.2, 0.2);
+            }
+
+            #menuToggle input:checked ~ span:nth-last-child(2) {
+                transform: rotate(-45deg) translate(0, -1px);
+            }
+
+            #menu {
+                position: fixed;
+                top: 56px;
+                right: 0;
+                width: 200px;
+                max-width: 80vw;
+                height: calc(100vh - 56px);
+                margin: 0;
+                padding: 20px;
+                background: #ffffff;
+                color: black;
+                list-style-type: none;
+                transform: translateX(100%);
+                transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                overflow-y: auto;
+                z-index: 1000;
+            }
+
+            #menu li {
+                padding: 15px 0;
+                font-size: 1rem;
+            }
+
+            #menu a {
+                color: black;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            #menu a:hover {
+                color: orange;
+            }
+
+            #menuToggle input:checked ~ ul {
+                transform: translateX(0);
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            #logo {
+                font-size: 1.2rem;
+            }
+
+            #logo img {
+                width: 30px;
+                height: 30px;
+            }
+
+            #menuToggle {
+                width: 36px;
+                height: 36px;
+            }
+
+            #menu {
+                width: 180px;
+                max-width: 75vw;
+            }
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
         #tracker-div {
             display: flex;
             flex-direction: column;
@@ -129,12 +284,14 @@ if (!isset($_SESSION['mysql_username'])) {
             align-items: center;
             margin-top: 5%;
         }
+
         #tracker-form > h1 {
             font-family: "Poppins", sans-serif;
             font-size: 2.5rem;
             color: #2c3e50;
             text-align: center;
         }
+
         #tracker-form > label {
             font-family: "Poppins", sans-serif;
             font-size: 1.2rem;
@@ -143,7 +300,8 @@ if (!isset($_SESSION['mysql_username'])) {
             display: block;
             padding-bottom: 10px;
         }
-    #tracker-form > input {
+
+        #tracker-form > input {
             width: 500px;
             height: 30px;
             border-radius: 5px;
@@ -152,7 +310,9 @@ if (!isset($_SESSION['mysql_username'])) {
             font-family: "Poppins", sans-serif;
             font-size: 1rem;
             outline: none;
-        }#tracker-form > input[type="submit"] {
+        }
+
+        #tracker-form > input[type="submit"] {
             width: 100px;
             height: 40px;
             border-radius: 5px;
@@ -168,6 +328,7 @@ if (!isset($_SESSION['mysql_username'])) {
             align-items: center;
             margin-bottom: 24px;
         }
+
         #tracker-form > input[type="submit"]:hover {
             background-color: white;
             color: #2c3e50;
@@ -175,18 +336,21 @@ if (!isset($_SESSION['mysql_username'])) {
             transition: 0.3s ease-in-out;
             outline: none;
         }
+
         #tracker-form > select {
             width: 510px;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #2c3e50;
         }
+
         #tracker-form > select:hover, #tracker-form > select:focus {
             background-color: #2c3e50;
             color: white;
             cursor: pointer;
         }
-form {
+
+        form {
             width: 800px;
             display: flex;
             flex-direction: column;
@@ -207,6 +371,7 @@ form {
             right: 0;
             box-sizing: border-box;
         }
+
         form::before {
             content: "";
             position: absolute;
@@ -219,6 +384,7 @@ form {
             transition: width 0.5s, height 0.5s 0.5s;
             box-sizing: border-box;
         }
+
         form::after {
             content: "";
             position: absolute;
@@ -230,22 +396,26 @@ form {
             transform: translateX(-50%);
             transition: width 0.5s, height 0.5s 0.5s;
             box-sizing: border-box;
-     }
+        }
+
         form:hover::before {
             width: 0;
             height: 10px;
             transition: height 0.5s, width 0.5s 0.5s;
-    }
-    form:hover::after {
+        }
+
+        form:hover::after {
             width: 0;
             height: 10px;
             transition: height 0.5s, width 0.5s 0.5s;
         }
+
         #span1 {
             background-color: #2c3e50;
             color: white;
             padding: 5px;
         }
+
         @media only screen and (max-width: 727px) {
             form::before {
                 content: "";
@@ -259,6 +429,7 @@ form {
                 transition: width 0.5s, height 0.5s 0.5s;
                 box-sizing: border-box;
             }
+
             form::after {
                 content: "";
                 position: absolute;
@@ -271,24 +442,19 @@ form {
                 transition: width 0.5s, height 0.5s 0.5s;
                 box-sizing: border-box;
             }
+
             form:hover::before {
                 width: 0;
                 height: 10px;
                 transition: height 0.5s, width 0.5s 0.5s;
             }
+
             form:hover::after {
                 width: 0;
                 height: 10px;
                 transition: height 0.5s, width 0.5s 0.5s;
             }
-            header {
-                width: fit-content;
-                position: sticky;
-                align-items: center;
-            }
-            #main-nav { 
-                visibility: hidden; 
-            }
+
             #tracker-div {
                 width: fit-content;
                 height: 100%;
@@ -296,6 +462,7 @@ form {
                 justify-content: center;
                 align-items: center;
             }
+
             #tracker-form {
                 width: 85%;
                 height: 80%;
@@ -305,139 +472,31 @@ form {
                 align-items: center;
                 transform: translateY(15%);
             }
+
             #tracker-form > h1 {
                 font-size: 1.5rem;
                 text-align: center;
             }
+
             #tracker-form > input {
                 width: 80%;
             }
+
             #tracker-form > select {
                 width: 83%;
-            }
-            header > #mobile-nav {
-                width: 10px;
-                height: 10px;
-                visibility: visible;
-                transform: translateX(0);
-                position: absolute;
-                top: 30%;
-                left: 53%;
-                background-color: transparent;
-                padding: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            #menuToggle {
-                display: block;
-                position: absolute;
-                top: 50%;
-                right: -2px;
-                transform: translateY(-50%);
-                -webkit-user-select: none;
-                user-select: none;
-            }
-            #menuToggle > ul > label > a {
-                text-decoration: none;
-                color: white;
-                transition: color 0.3s ease;
-            }
-            #menuToggle > a:hover {
-                color: #232323;
-            }
-            #menuToggle > input {
-                display: block;
-                width: 40px;
-                height: 32px;
-                position: absolute;
-                top: -7px;
-                left: -5px;
-                cursor: pointer;
-                opacity: 0;
-                z-index: 2;
-                -webkit-touch-callout: none;
-            }
-            #menuToggle > span {
-                display: block;
-                width: 33px;
-                height: 4px;
-                margin-bottom: 5px;
-                position: relative;
-                background: #cdcdcd;
-                border-radius: 3px;
-                z-index: 1;
-                transform-origin: 4px 0px;
-                transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                            background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-                            opacity 0.55s ease;
-            }
-            #menuToggle span:first-child {
-                transform-origin: 0% 0%;
-            }
-            #menuToggle span:nth-last-child(2) {
-                transform-origin: 0% 100%;
-            }
-            #menuToggle input:checked ~ span {
-                opacity: 1;
-                transform: rotate(45deg) translate(-2px, -1px);
-                background: #232323;
-            }
-            #menuToggle input:checked ~ span:nth-last-child(3) {
-                opacity: 0;
-                transform: rotate(0deg) scale(0.2, 0.2);
-            }
-            #menuToggle input:checked ~ span:nth-last-child(2) {
-                transform: rotate(-45deg) translate(0, -1px);
-            }
-            #menu {
-                position: absolute;
-                max-width: 400px;
-                width: 100vw;
-                max-height: 100vh;
-                margin: -100px 0 500px -200px;
-                padding: 50px;
-                padding-top: 125px;
-                box-sizing: border-box;
-                overflow-y: auto;
-                background: #ededed;
-                list-style-type: none;
-                -webkit-font-smoothing: antialiased;
-                transform-origin: 100% 0%;
-                transform: translate(100%, 0);
-                transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-            }
-            #menu li {
-                padding: 10px 0;
-                font-size: 22px;
-            }
-            #menu li label {
-                cursor: pointer;
-            }
-            #menu > li > label > a {
-                text-decoration: none;
-                color: black !important;
-                font-family: "Poppins", sans-serif !important;
-                transition: color 0.3s ease;
-            }
-            #menu > li > label > a:hover {
-                color: orange !important;
-            }
-            #menuToggle input:checked ~ ul {
-                transform: translate(0, 0);
             }
         }
     </style>
 </head>
 <body>
-    <header style="background-color: #2c3e50; position: sticky; top: 0; z-index: 1000;">
+    <header>
         <div id="logo">
-            <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" width="40" height="40" id="hero-img" alt="" style="background-color:white; border-radius: 100%;">
-            <a href="../pages/main.php" style="text-decoration: none; color: white;">SLEEPSENSE</a>
+            <img src="../public/modern_circular_icon_for_SleepSense_with_black__gray__and_white_colors-removebg-preview.png" alt="SleepSense Logo">
+            <a href="../pages/main.php">SLEEPSENSE</a>
         </div>
         <nav id="main-nav">
-            <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
-            <a href="#" id="button-2">Resources</a>
+            <a href="../pages/about.php" id="button-1">About Sleep</a>
+            <a href="../pages/resources.php" id="button-2">Resources</a>
             <a href="../pages/backend/logout.php" id="button-5">Log Out</a>
         </nav>
         <nav id="mobile-nav">
@@ -448,8 +507,8 @@ form {
                 <span></span>
                 <ul id="menu">
                     <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
-                    <li><label for="menuBox"><a href="#">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/main.php">Log Out</a></label></li>
+                    <li><label for="menuBox"><a href="../pages/resources.php">Resources</a></label></li>
+                    <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
                 </ul>
             </div>
         </nav>
