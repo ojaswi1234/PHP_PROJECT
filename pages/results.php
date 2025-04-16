@@ -441,7 +441,16 @@ if (isset($_POST['download_csv'])) {
         <nav id="main-nav">
             <a href="../pages/about.php" id="button-1">About Sleep<span></span></a>
             <a href="../pages/resources.php" id="button-2">Resources</a>
-            <a href="../pages/backend/logout.php" id="button-5">Log Out</a>
+            <a href="#" id="button-5" onclick="confirmLogout()">Log Out</a>
+            <script>
+                function confirmLogout() {
+                    if (confirm('After clicking Log Out, the data will be deleted. Kindly make sure you have downloaded your data from this page before you log out. Do you want to continue logging out?')) {
+                        window.location.href = '../pages/backend/logout.php';
+                    } else {
+                        alert('Please download your data before logging out.');
+                    }
+                }
+            </script>
         </nav>
         <nav id="mobile-nav">
             <div id="menuToggle">

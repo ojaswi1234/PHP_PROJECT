@@ -449,7 +449,7 @@ form {
                 <ul id="menu">
                     <li><label for="menuBox"><a href="../pages/about.php">About Sleep</a></label></li>
                     <li><label for="menuBox"><a href="#">Resources</a></label></li>
-                    <li><label for="menuBox"><a href="../pages/backend/logout.php">Log Out</a></label></li>
+                    <li><label for="menuBox"><a href="../pages/main.php">Log Out</a></label></li>
                 </ul>
             </div>
         </nav>
