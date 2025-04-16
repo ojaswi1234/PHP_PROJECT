@@ -252,7 +252,7 @@ if (isset($_POST['download_csv'])) {
 
         #download-btn:hover {
             background-color: transparent;
-            color: #ecf0f1;
+            color: black;
         }
 
         @media only screen and (max-width: 727px) {
@@ -479,11 +479,11 @@ if (isset($_POST['download_csv'])) {
 
             if ($hours) {
                 if ($hours < 6) {
-                    echo "<h3>It seems like you are not getting enough sleep. Please try to get at least 6 hours of sleep per day.</h3>";
+                    echo "<h3 style='background-color: red; color: white; padding: 2px;'>It seems like you are not getting enough sleep. Please try to get at least 6 hours of sleep per day.</h3>";
                 } else if ($hours >= 6 && $hours <= 8) {
                     echo "<h3>Great job! You are getting enough sleep. Keep it up!</h3>";
                 } else {
-                    echo "<h3>It seems like you are getting too much sleep. Please try to get at least 6 hours of sleep per day.</h3>";
+                    echo "<h3 style='background-color: yellow;  padding: 2px;'>It seems like you are getting too much sleep. Please try to get at least 6 hours of sleep per day.</h3>";
                 }
             }
             ?>
