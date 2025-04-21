@@ -199,10 +199,10 @@ session_start();
     <div id="login-div">
         <form method="post" action="../pages/backend/login_handler.php" id="login-form">
             <h1>SleepSense Login</h1>
-            <label for="username">MySQL Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your MySQL username..." required>
-            <label for="password">MySQL Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your MySQL password...">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username..." required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password...">
             <input type="submit" value="Login">
             <?php
             if (isset($_SESSION['login_error'])) {
