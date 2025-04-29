@@ -542,7 +542,7 @@ if (!isset($_SESSION['mysql_username'])) {
                     <option value="Sunday">Sunday</option>
                 </select>
                 <br><br>
-                <input type="submit" value="Submit" id="submit-button">
+                <input type="submit" value="Submit" id="submit-button" onclick="alert('Data submitted successfully!')">
             </form>
         </div>
     </main>

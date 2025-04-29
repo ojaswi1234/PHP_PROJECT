@@ -230,7 +230,7 @@ session_start();
             }
         });
 
-        // Optional: Fade-in animation for form
+    
         window.addEventListener('load', () => {
             const form = document.getElementById('login-form');
             form.style.opacity = '0';

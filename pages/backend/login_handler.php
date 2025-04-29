@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     $_SESSION['mysql_username'] = $username;
     $_SESSION['mysql_password'] = $password;
-
+    $_SESSION['session_created_at'] = time();
     
     $con = @mysqli_connect($servername, $username, $password);
 

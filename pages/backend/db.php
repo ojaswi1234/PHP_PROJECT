@@ -1,6 +1,26 @@
 <?php
+ini_set('session.gc_maxlifetime', 604800); // 7 days in seconds
+session_set_cookie_params(604800); // Set session cookie lifetime
 session_start();
 
+$one_week_seconds = 7 * 24 * 60 * 60; // 604,800 seconds
+$current_time = time();
+
+// Check login session data
+if (isset($_SESSION['session_created_at']) && ($current_time - $_SESSION['session_created_at']) > $one_week_seconds) {
+    // Clear login-related session data
+    unset($_SESSION['mysql_username']);
+    unset($_SESSION['mysql_password']);
+    unset($_SESSION['session_created_at']);
+}
+
+// Check results session data
+if (isset($_SESSION['results_created_at']) && ($current_time - $_SESSION['results_created_at']) > $one_week_seconds) {
+    // Clear results-related session data
+    unset($_SESSION['average_sleep_hours']);
+    unset($_SESSION['daywise_hours']);
+    unset($_SESSION['results_created_at']);
+}
 // Check if user is logged in
 if (!isset($_SESSION['mysql_username']) || !isset($_SESSION['mysql_password'])) {
     header("Location: ../../login.php");
@@ -82,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($wake_time < $sleep_time) {
                 $wake_time += 24 * 3600;
             }
-
+            
             $sleep_hours = ($wake_time - $sleep_time) / 3600;
             $total_sleep_hours += $sleep_hours;
 
@@ -94,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['average_sleep_hours'] = $average_sleep_hours;
         $_SESSION['daywise_hours'] = $daywise_hours;
-
+        $_SESSION['results_created_at'] = time();
         header("Location: ../results.php");
         exit();
     } else {
