@@ -1,4 +1,4 @@
-# PHP_PROJECT
+# SleepSense
 
 ## Table of Contents
 - [About the Project](#about-the-project)
@@ -16,7 +16,7 @@
 
 ## About the Project
 
-**PHP_PROJECT** is a lightweight web application designed to provide users with a simple and effective overview of their weekly sleep data. The website is intended for one-time use, ensuring privacy and minimal data retention. User data is automatically deleted after one week, or users can manually delete their data by logging out. Additionally, users can download their sleep data in CSV format. 
+**SleepSense** is a lightweight web application designed to provide users with a simple and effective overview of their weekly sleep data. The website is intended for one-time use, ensuring privacy and minimal data retention. User data is automatically deleted after one week, or users can manually delete their data by logging out. Additionally, users can download their sleep data in CSV format. 
 
 To make the data more intuitive, **Chart.js** is used to visualize sleep patterns in dynamic and interactive charts.
 
